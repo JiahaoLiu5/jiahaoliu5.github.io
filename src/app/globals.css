@@ -128,7 +128,7 @@ button { cursor: pointer; }
 /* Stack by the actual content width, including when the profile rail is present. */
 @container home (max-width: 700px) {
   .research-themes { grid-template-columns: 1fr; gap: 32px; }
-  .theme-image { aspect-ratio: 3 / 2; margin-bottom: 16px; }
+  .theme-image { margin-bottom: 16px; }
   .theme-title { font-size: 25px; text-wrap: initial; }
 }
 .background-copy { margin: 30px 0 22px; }

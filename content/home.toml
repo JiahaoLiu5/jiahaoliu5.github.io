@@ -6,21 +6,21 @@ background = "Education, previous research experience, and collaborations — to
 research_label = "research"
 
 # Theme titles supplied by Jiahao. Keywords are initial suggestions;
-# images are generated illustrative placeholders, not photographs of his work.
+# images supplied by Jiahao as Research Theme 1.png, 2.png, and 3.png.
 [[themes]]
 title = "Human Interaction Behavior in Immersive XR"
 keywords = ["Immersive interaction", "Human behavior", "User experience"]
-src = "/images/theme-immersive-xr.webp"
-alt = "Illustrative placeholder: a headset wearer interacting with spatial targets in an XR lab"
+src = "/images/theme-immersive-xr-illustration.webp"
+alt = "Illustration of two people in immersive XR interacting with a shared virtual object, with body tracking and behavior charts"
 
 [[themes]]
 title = "Human Interaction with Embodied AI Agent"
 keywords = ["Embodied AI", "Human–agent interaction", "Social presence"]
-src = "/images/theme-embodied-ai.webp"
-alt = "Illustrative placeholder: a researcher interacting with an embodied robot at a table"
+src = "/images/theme-embodied-ai-illustration.webp"
+alt = "Illustration of a person conversing with an embodied AI robot, with dialogue bubbles and data visualizations"
 
 [[themes]]
 title = "Real-World Application of XR Technology"
 keywords = ["Applied XR", "Real-world contexts", "Human-centered design"]
-src = "/images/theme-applied-xr.webp"
-alt = "Illustrative placeholder: an engineer using augmented reality to inspect a physical machine"
+src = "/images/theme-applied-xr-illustration.webp"
+alt = "Illustration of a person using XR to inspect industrial equipment with augmented reality overlays"

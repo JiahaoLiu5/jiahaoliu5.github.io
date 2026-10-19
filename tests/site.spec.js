@@ -28,9 +28,9 @@ test('PRISM homepage renders the profile, research themes, and research list wit
   expect(bad).toEqual([]);
 });
 
-test('template media and projects remain explicit placeholders', async ({page})=>{
+test('supplied theme illustrations render and unfinished projects remain placeholders', async ({page})=>{
   await page.goto('./');
-  await expect(page.getByRole('img',{name:/Illustrative placeholder:/})).toHaveCount(3);
+  await expect(page.getByRole('img',{name:/Illustration of/})).toHaveCount(3);
   await expect(page.getByRole('img',{name:'Portrait placeholder for Jiahao Liu'})).toBeVisible();
   await expect(page.getByRole('heading',{name:'Research Project 01',exact:true})).toBeVisible();
   await expect(page.locator('.research-date')).toHaveText(Array(5).fill('Date pending'));

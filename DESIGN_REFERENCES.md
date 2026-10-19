@@ -10,11 +10,11 @@ The homepage, profile, navigation, and footer are adapted to the supplied refere
 
 The user supplied a screenshot of Jonathan Segal's homepage. This is the visual reference for the greeting, red inline links, second biography paragraph, and compact research list with bold titles and small date/venue lines. The original photo wall was subsequently replaced at the user's request by three research-theme cards. A user-supplied MIT Media Lab screenshot guides the image-above-title arrangement, gray secondary text, and editorial typography; the cards add gutters. Neither reference's biography, research records, or photographs are presented as Jiahao's work or experiences.
 
-Three generated illustrative image placeholders and five project placeholders are used until Jiahao supplies real media and research records. The theme titles are Jiahao's own; keywords are provisional suggestions. Profile facts come only from information Jiahao supplied: Cornell University, Information Science, Ph.D. student, Ithaca, HCI/behavioral research, immersive technologies, institutional email, and GitHub account.
+The three theme illustrations were supplied by Jiahao, replacing the initial generated placeholders. Five project placeholders remain until Jiahao supplies research records. The theme titles are Jiahao's own; keywords are provisional suggestions. Profile facts come only from information Jiahao supplied: Cornell University, Information Science, Ph.D. student, Ithaca, HCI/behavioral research, immersive technologies, institutional email, and GitHub account.
 
 ## Research-theme images
 
-`theme-immersive-xr.webp`, `theme-embodied-ai.webp`, and `theme-applied-xr.webp` were generated for this layout as generic illustrations of immersive interaction, human–agent interaction, and applied XR. They do not depict Jiahao, his participants, or actual research results. Alternative text identifies them as illustrative placeholders. The files are served locally; no external image service is required to view the website.
+Jiahao uploaded `Research Theme 3 pictures.zip`, containing `Research Theme 1.png`, `Research Theme 2.png`, and `Research Theme 3.png`. They map in numerical order to immersive interaction, human–agent interaction, and applied XR. The website serves them as `theme-immersive-xr-illustration.webp`, `theme-embodied-ai-illustration.webp`, and `theme-applied-xr-illustration.webp`. WebP conversion is lossless; decoded pixels were checked against each original PNG. Square image frames at all screen sizes preserve the full compositions. Alternative text describes each illustration. The files are served locally; no external image service is required to view the website.
 
 ## Portrait placeholder
 
