@@ -2,6 +2,8 @@
 
 A responsive personal website built with Vite, HTML, CSS, and JavaScript. It uses system fonts and has no third-party runtime services or required credentials.
 
+Website: **https://jiahaoliu5.github.io/**
+
 ## Develop
 
 Use Node.js 24 LTS and npm.
@@ -35,6 +37,12 @@ The browser tests exercise the production build, project rendering, navigation, 
 
 ```sh
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test
+```
+
+The deployment workflow also runs these checks against the published HTTPS website using Chrome on the GitHub runner. To run them against the live website from another trusted development machine:
+
+```sh
+LIVE_SITE_URL=https://jiahaoliu5.github.io/ npm test
 ```
 
 For cloud npm installations, use `npm --cache /workspace/.cache/npm ci` when the home directory is read-only.
