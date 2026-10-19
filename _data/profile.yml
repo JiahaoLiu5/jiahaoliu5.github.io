@@ -9,27 +9,27 @@ portrait_alt: Portrait placeholder for Jiahao Liu
 avatar: assets/img/avatar-placeholder.png
 avatar_alt: Avatar placeholder for Jiahao Liu
 sidebar_bio:
-  - "PhD Student, Cornell University"
+  - "Ph.D. Student"
+  - "Cornell University"
   - "HCI & Behavioral Researcher"
-  - "VR/AR/MR Expertise"
 location: "Ithaca, NY, USA"
 institution: "Cornell University"
-department: "Dept. of Information Science"
+department: "Information Science"
 emails:
   - jl4226@cornell.edu
 socials:
   - label: Google Scholar
     url: null
-    icon: ai ai-google-scholar
+    icon: fa-brands fa-google
   - label: ORCID
     url: null
-    icon: ai ai-orcid profile-icon--orcid
+    icon: ai ai-orcid
   - label: GitHub
     url: https://github.com/JiahaoLiu5
     icon: fa-brands fa-github
   - label: LinkedIn
     url: null
-    icon: fa-brands fa-linkedin profile-icon--linkedin
+    icon: fa-brands fa-linkedin
 interests:
   - "[Research interest 1]"
   - "[Research interest 2]"

@@ -43,13 +43,13 @@ test('academic profile shows the requested information without fake account link
   const profile = page.getByRole('complementary', { name: 'Profile' });
   await expect(profile.getByRole('heading', { name: 'Jiahao Liu' })).toBeVisible();
   await expect(profile.locator('.author__bio-line')).toHaveText([
-    'PhD Student, Cornell University',
+    'Ph.D. Student',
+    'Cornell University',
     'HCI & Behavioral Researcher',
-    'VR/AR/MR Expertise',
   ]);
   await expect(profile.getByText('Ithaca, NY, USA', { exact: true })).toBeVisible();
-  await expect(profile.getByText('Cornell University', { exact: true })).toBeVisible();
-  await expect(profile.getByText('Dept. of Information Science', { exact: true })).toBeVisible();
+  await expect(profile.locator('.author__urls').getByText('Cornell University', { exact: true })).toBeVisible();
+  await expect(profile.getByText('Information Science', { exact: true })).toBeVisible();
   await expect(profile.locator('.author__urls li')).toHaveCount(8);
   await expect(profile.locator('.author__urls a')).toHaveCount(2);
   await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/JiahaoLiu5');
