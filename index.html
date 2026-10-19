@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <meta name="description" content="Jiahao Liu’s personal website. A home for projects, ideas, and things I’m learning." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jiahaoliu5.github.io/" />
+    <link rel="canonical" href="https://jiahaoliu5.github.io/" />
+    <meta property="og:title" content="Jiahao Liu — A personal space" />
+    <meta property="og:description" content="A home for projects, ideas, and things I’m learning." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Jiahao Liu — A personal space</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="#main" aria-label="Jiahao Liu home">jl<span>.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">+</span></button>
+        <nav id="site-nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="dot" aria-hidden="true"></span> A PERSONAL SPACE ON THE INTERNET</p>
+            <h1 id="hero-title">Hello, I’m<br />Jiahao Liu<span class="accent">.</span></h1>
+            <p class="hero-description">A home for my work, ideas,<br class="desktop-break" /> and things I’m learning along the way.</p>
+            <a class="button" href="#projects">Explore my work <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M7 17h10V7" /></svg></a>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-grid"></div>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="sphere"></div>
+            <span class="art-plus plus-one">+</span><span class="art-plus plus-two">+</span>
+            <span class="art-caption">ALWAYS A WORK IN PROGRESS</span>
+            <span class="art-number">01 / ∞</span>
+          </div>
+          <div class="hero-footer"><span>Curiosity is a good place to start.</span><a href="#about">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+        </section>
+
+        <section id="about" class="section about-section" aria-labelledby="about-title">
+          <div class="section-label"><span>01</span> ABOUT</div>
+          <div class="about-content">
+            <h2 id="about-title">A little about<br /><em>this space.</em></h2>
+            <div class="about-text">
+              <p>This is my corner of the web: a place to share projects, collect ideas, and document what I’m learning.</p>
+              <p>I’ll be adding more here over time. For now, take a look around—and feel free to say hello.</p>
+              <a class="text-link" href="https://github.com/JiahaoLiu5">Find me on GitHub <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="section projects-section" aria-labelledby="projects-title">
+          <div class="section-label"><span>02</span> PROJECTS</div>
+          <div class="section-heading"><h2 id="projects-title">Things I’m <em>building.</em></h2><span class="small-note">A growing collection</span></div>
+          <div id="project-list" class="project-list"></div>
+        </section>
+
+        <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+          <div class="section-label"><span>03</span> CONTACT</div>
+          <div class="contact-content">
+            <div><p class="eyebrow">LET’S CONNECT</p><h2 id="contact-title">Good things start<br />with <em>a hello.</em></h2></div>
+            <a class="contact-link" href="https://github.com/JiahaoLiu5">Say hello on GitHub <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>© <span id="year"></span> Jiahao Liu</span><span>Made with care. Always evolving.</span><a href="#main">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
+    </div>
+  </body>
+</html>
