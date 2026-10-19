@@ -1,34 +1,48 @@
-<aside class="sidebar">
-  {%- comment -%}
-  Avatar only. The name is deliberately absent: the home page carries it in the
-  masthead and every page carries it in the top-bar wordmark, so putting it
-  here as well made the rail a different shape on the home page than on the
-  subpages. A sidebar that changes between pages reads as a bug.
-  {%- endcomment -%}
-  <div class="sidebar-head">
-    <figure>
-      <img src="{{ site.data.profile.avatar | relative_url }}" alt="{{ site.data.profile.avatar_alt }}"
-           width="160" height="160" />
-    </figure>
-  </div>
+{%- comment -%}
+Profile structure adapted from AcademicPages _includes/author-profile.html.
+Copyright (c) 2016 Michael Rose, MIT. See licenses/academicpages-MIT.txt.
+{%- endcomment -%}
+<aside class="sidebar sidebar--academic" aria-label="Profile">
+  <div class="author-profile" itemscope itemtype="https://schema.org/Person">
+    <div class="author__avatar">
+      <img src="{{ site.data.profile.avatar | relative_url }}" alt="{{ site.data.profile.avatar_alt | escape }}"
+           width="175" height="175" itemprop="image" />
+    </div>
 
-  {%- comment -%}
-  Affiliation, city, email. Set in mono: these are literals, and a monospaced
-  face marks them as such without spending a colour on it.
-  {%- endcomment -%}
-  <address class="contact">
-    {%- for line in site.data.profile.address %}
-    <p>{{ line }}</p>
-    {%- endfor %}
-    {%- for e in site.data.profile.emails %}
-    <p><a href="mailto:{{ e }}">{{ e }}</a></p>
-    {%- endfor %}
-  </address>
+    <div class="author__content">
+      <h2 class="author__name" itemprop="name">{{ site.data.profile.name | escape }}</h2>
+      {%- if site.data.profile.sidebar_bio %}
+      <p class="author__bio" itemprop="description">{{ site.data.profile.sidebar_bio | escape }}</p>
+      {%- endif %}
+    </div>
 
-  <div class="social">
-    {%- for s in site.data.profile.socials %}
-    <a href="{{ s.url | relative_url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}"><i class="{{ s.icon }}" aria-hidden="true"></i></a>
-    {%- endfor %}
+    <details class="author__urls-wrapper" data-profile-details open>
+      <summary class="author__toggle">Contact &amp; profiles</summary>
+      <ul class="author__urls">
+        {%- if site.data.profile.location %}
+        <li><span class="profile-detail"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{{ site.data.profile.location | escape }}</span></span></li>
+        {%- endif %}
+        {%- if site.data.profile.institution %}
+        <li><span class="profile-detail"><i class="fa-solid fa-building-columns" aria-hidden="true"></i><span>{{ site.data.profile.institution | escape }}</span></span></li>
+        {%- endif %}
+        {%- if site.data.profile.emails.size > 0 %}
+        {%- for email in site.data.profile.emails %}
+        <li><a href="mailto:{{ email | escape }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email{% unless forloop.first %} ({{ forloop.index }}){% endunless %}</span></a></li>
+        {%- endfor %}
+        {%- else %}
+        <li><span class="profile-detail profile-detail--placeholder" title="Email address to be added"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email<span class="profile-sr-only"> (to be added)</span></span></span></li>
+        {%- endif %}
+        {%- for social in site.data.profile.socials %}
+        <li>
+          {%- if social.url %}
+          <a href="{{ social.url | relative_url | escape }}" target="_blank" rel="noopener noreferrer"><i class="{{ social.icon }}" aria-hidden="true"></i><span>{{ social.label | escape }}</span></a>
+          {%- else %}
+          <span class="profile-detail profile-detail--placeholder" title="{{ social.label | escape }} link to be added"><i class="{{ social.icon }}" aria-hidden="true"></i><span>{{ social.label | escape }}<span class="profile-sr-only"> (to be added)</span></span></span>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </details>
   </div>
 
   {%- if page.anchors %}

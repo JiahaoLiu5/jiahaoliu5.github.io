@@ -32,7 +32,7 @@ export async function build(base) {
   const site = { ...config, baseurl: base, time: new Date(), data };
   await rm(output, { recursive: true, force: true });
   await mkdir(output, { recursive: true });
-  for (const folder of ['css', 'js', 'assets']) {
+  for (const folder of ['css', 'js', 'assets', 'licenses']) {
     await cp(path.join(root, folder), path.join(output, folder), { recursive: true });
   }
   // Use the original font-family names, leaving the upstream CSS unchanged.
@@ -56,6 +56,10 @@ export async function build(base) {
     await cp(path.join(icons, folder), path.join(output, 'assets/fontawesome', folder), { recursive: true });
   }
   await cp(path.join(icons, 'LICENSE.txt'), path.join(output, 'assets/fontawesome/LICENSE.txt'));
+  const academicIcons = path.join(root, 'node_modules/academicons');
+  for (const folder of ['css', 'fonts']) {
+    await cp(path.join(academicIcons, folder), path.join(output, 'assets/academicons', folder), { recursive: true });
+  }
   for (const source of ['index.html', 'service.html', 'search.json']) {
     const raw = await read(source);
     const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);

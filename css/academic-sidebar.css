@@ -1,0 +1,116 @@
+/* AcademicPages author profile, adapted for the existing page and theme.
+   Copyright (c) 2016 Michael Rose. MIT: licenses/academicpages-MIT.txt.
+   All changes are scoped to the profile rail. */
+
+.sidebar--academic {
+  color: var(--ink-muted);
+  max-height: calc(100dvh - var(--topbar-h) - var(--s-7));
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-bottom: var(--s-2);
+}
+
+.sidebar--academic .author__avatar { margin: 0 0 12px; }
+.sidebar--academic .author__avatar img {
+  display: block;
+  width: 175px;
+  height: 175px;
+  padding: 5px;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, var(--bg));
+  border-radius: 50%;
+  background: var(--bg);
+  object-fit: cover;
+}
+
+.sidebar--academic .author__name {
+  margin: 0 0 10px;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: inherit;
+}
+.sidebar--academic .author__bio {
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.sidebar--academic .author__toggle { display: none; }
+.sidebar--academic .author__urls { list-style: none; padding: 0; margin: 0; }
+.sidebar--academic .author__urls li { margin: 0; font-size: 13px; line-height: 1.5; }
+.sidebar--academic .author__urls a,
+.sidebar--academic .profile-detail {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 10px;
+  padding: 6px 0;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.sidebar--academic .author__urls a:hover { color: var(--link); text-decoration: underline; }
+.sidebar--academic .author__urls i { width: 14px; text-align: center; }
+.sidebar--academic .profile-icon--orcid { color: #a6ce39; }
+.sidebar--academic .profile-icon--bluesky { color: #1185fe; }
+
+.profile-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sidebar--academic nav { margin-top: 22px; padding-top: 14px; }
+.sidebar--academic nav a { font-size: 13px; font-weight: 500; color: inherit; }
+.sidebar--academic nav li + li { margin-top: 8px; }
+
+@media (max-width: 1000px) {
+  .sidebar--academic { display: block; max-height: none; overflow: visible; padding-bottom: var(--s-5); }
+  .sidebar--academic .author-profile {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    column-gap: 20px;
+    row-gap: 6px;
+    align-items: start;
+  }
+  .sidebar--academic .author__avatar { grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+  .sidebar--academic .author__avatar img { width: 88px; height: 88px; padding: 3px; }
+  .sidebar--academic .author__content { grid-column: 2; min-width: 0; }
+  .sidebar--academic .author__name { margin-bottom: 4px; }
+  .sidebar--academic .author__bio { margin-bottom: 0; }
+  .sidebar--academic .author__urls-wrapper { grid-column: 2; min-width: 0; }
+  .sidebar--academic .author__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--link);
+    cursor: pointer;
+    list-style: none;
+  }
+  .sidebar--academic .author__toggle::-webkit-details-marker { display: none; }
+  .sidebar--academic .author__toggle::after {
+    content: "";
+    width: 6px; height: 6px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+  .sidebar--academic details[open] > .author__toggle::after { transform: translateY(1px) rotate(225deg); }
+  .sidebar--academic .author__toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  .sidebar--academic .author__urls { margin-top: 6px; }
+  .sidebar--academic nav { margin-top: 16px; padding-top: 0; }
+  .sidebar--academic nav li + li { margin-top: 0; }
+}
+
+@media (max-width: 700px) {
+  .sidebar--academic .author-profile { grid-template-columns: 76px minmax(0, 1fr); column-gap: 16px; }
+  .sidebar--academic .author__avatar img { width: 76px; height: 76px; }
+}

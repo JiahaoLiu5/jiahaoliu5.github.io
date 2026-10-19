@@ -38,6 +38,42 @@ test('personal details and research are explicit placeholders with no borrowed c
   await expect(page.locator('.site-footer')).toContainText('Template by Yixuan Yang');
 });
 
+test('academic profile shows the requested information without fake account links', async ({ page }) => {
+  await page.goto('./');
+  const profile = page.getByRole('complementary', { name: 'Profile' });
+  await expect(profile.getByRole('heading', { name: 'Jiahao Liu' })).toBeVisible();
+  await expect(profile.locator('.author__bio')).toContainText('Ph.D. student.');
+  await expect(profile.locator('.author__urls li')).toHaveCount(8);
+  await expect(profile.locator('.author__urls a')).toHaveCount(1);
+  await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/JiahaoLiu5');
+  for (const label of ['Email', 'Google Scholar', 'ORCID', 'PubMed', 'Bluesky']) {
+    await expect(profile.locator('.profile-detail--placeholder').filter({ hasText: label })).toBeVisible();
+  }
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => document.fonts.check('13px Academicons'))).toBe(true);
+});
+
+test('compact profile opens with the keyboard and remains accessible after resizing', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./');
+  const profile = page.getByRole('complementary', { name: 'Profile' });
+  const disclosure = profile.locator('details');
+  const toggle = profile.locator('summary');
+  await expect(disclosure).not.toHaveAttribute('open');
+  await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toBeHidden();
+  await toggle.focus();
+  await page.keyboard.press('Enter');
+  await expect(disclosure).toHaveAttribute('open', '');
+  await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.keyboard.press('Enter');
+  await expect(disclosure).not.toHaveAttribute('open');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(disclosure).toHaveAttribute('open', '');
+  await expect(toggle).toBeHidden();
+  await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toBeVisible();
+});
+
 test('original card disclosure responds to pointer and keyboard', async ({ page }) => {
   await page.goto('./');
   const card = page.locator('#project-01');
