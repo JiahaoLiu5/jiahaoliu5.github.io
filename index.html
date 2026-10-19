@@ -1,96 +1,11 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fafbf9" />
-  <meta name="description" content="Jiahao Liu’s academic homepage. PhD student, research, publications, and projects." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jiahaoliu5.github.io/" />
-  <meta property="og:title" content="Jiahao Liu — Academic Homepage" />
-  <meta property="og:description" content="PhD student. A home for research, publications, and projects." />
-  <link rel="canonical" href="https://jiahaoliu5.github.io/" />
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <title>Jiahao Liu — Academic Homepage</title>
-  <script>
-    try {
-      const preference = localStorage.getItem('jiahao-theme');
-      document.documentElement.dataset.theme = preference === 'dark' || (!preference && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-    } catch {}
-  </script>
-  <script type="module" src="/src/main.js"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></symbol>
-    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14a8 8 0 0 1-10-10A8 8 0 1 0 20 14Z" /></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
-    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></symbol>
-    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" /></symbol>
-    <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9Zm4 2v6c4 3 8 3 12 0v-6m4-2v8" /></symbol>
-    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Zm0 0v6h6M8 13h8m-8 4h6" /></symbol>
-    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V3h11v18M2 21h20m-7-12h5v12M8 7h3m-3 4h3m-3 4h3m-3 6v-3h3v3" /></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z" /><circle cx="12" cy="10" r="2" /></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2-10-1v14c4-1 7-1 10 1m0-14c3-2 6-2 10-1v14c-4-1-7-1-10 1V6Z" /></symbol>
-    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" /><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m3 10v-3a6 6 0 0 0-2-4" /></symbol>
-    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z" /></symbol>
-  </svg>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="wordmark" href="#main" aria-label="Jiahao Liu home"><span class="wordmark-initials">jl.</span><span>Jiahao Liu</span></a>
-      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <a data-section-link href="#about" aria-current="location">About</a>
-        <a data-section-link href="#research">Research</a>
-        <a data-section-link href="#publications">Publications</a>
-        <a data-section-link href="#projects">Projects</a>
-        <a data-section-link href="#experience">Experience</a>
-        <a data-section-link href="#contact">Contact</a>
-      </nav>
-      <div class="header-controls">
-        <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-moon" /></svg></button>
-        <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#i-menu" /></svg></button>
-      </div>
-    </div>
-  </header>
-  <div class="page-layout">
-    <aside class="profile-sidebar" aria-label="Academic profile">
-      <div id="portrait" class="portrait"><div class="portrait-placeholder" role="img" aria-label="Portrait placeholder for Jiahao Liu"><div class="portrait-orbit"></div><span class="portrait-initials" aria-hidden="true">JL</span><span class="portrait-caption">PORTRAIT TO FOLLOW</span><span class="portrait-corner" aria-hidden="true">+</span></div></div>
-      <div class="profile-identity"><h1 id="profile-name">Jiahao Liu<span class="name-dot">.</span></h1><p id="profile-role" class="profile-role"><span class="status-dot" aria-hidden="true"></span>PhD student</p></div>
-      <div id="profile-affiliation" class="profile-affiliation"></div>
-      <div id="profile-links" class="profile-links" aria-label="Profile links"></div>
-      <p id="profile-status" class="profile-status">Profile in progress</p>
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-index"><p class="eyebrow">ON THIS PAGE</p><a data-section-link href="#about"><span>01</span>About me</a><a data-section-link href="#research"><span>02</span>Research directions</a><a data-section-link href="#publications"><span>03</span>Publications</a><a data-section-link href="#projects"><span>04</span>Projects</a><a data-section-link href="#experience"><span>05</span>Academic life</a></div>
-      <a class="sidebar-note" href="https://github.com/JiahaoLiu5/jiahaoliu5.github.io">A small corner of the web.<svg class="icon" aria-hidden="true"><use href="#i-external" /></svg></a>
-    </aside>
-    <main id="main" class="main-content" tabindex="-1">
-      <section id="about" class="about-section section" aria-labelledby="about-title">
-        <div class="section-kicker"><span class="eyebrow">A LITTLE INTRODUCTION</span><span class="welcome-label"><span class="status-dot" aria-hidden="true"></span>Hello & welcome</span></div>
-        <h2 id="about-title" class="intro-title">About me<span class="heading-dot">.</span></h2>
-        <div id="biography" class="biography"><p>Hi, I’m Jiahao, a <strong>PhD student</strong>. Welcome to my academic home on the web.</p><p>Here I’ll share my research, publications, projects, and ideas. My full biography and research statement will be added soon.</p></div>
-        <div class="interests-block"><span class="eyebrow">RESEARCH INTERESTS</span><div id="research-interests" class="interest-tags"></div></div>
-        <div class="news-block"><div class="news-heading"><svg class="icon" aria-hidden="true"><use href="#i-spark" /></svg><h3>Latest updates</h3></div><div id="news-list"><p class="quiet-text">Research updates and milestones will appear here.</p></div></div>
-      </section>
-      <section id="research" class="section" aria-labelledby="research-title"><div class="section-heading"><div><p class="eyebrow section-number">02 / RESEARCH</p><h2 id="research-title">Questions & directions</h2></div><span class="section-aside">A space for exploration</span></div><div id="research-list" class="research-grid"></div></section>
-      <section id="publications" class="section" aria-labelledby="publications-title">
-        <div class="section-heading"><div><p class="eyebrow section-number">03 / PUBLICATIONS</p><h2 id="publications-title">Papers & preprints</h2></div><span id="publication-count" class="section-aside">To be added</span></div>
-        <div id="publication-controls" class="publication-controls" hidden><label class="search-label"><span class="sr-only">Search publications</span><input id="publication-search" type="search" placeholder="Search titles, authors, or venues…" /></label><select id="publication-year" aria-label="Publication year"><option value="all">All years</option></select></div>
-        <div id="publication-list" class="publication-list"></div><p id="publication-status" class="sr-only" role="status" aria-live="polite"></p>
-      </section>
-      <section id="projects" class="section" aria-labelledby="projects-title"><div class="section-heading"><div><p class="eyebrow section-number">04 / PROJECTS</p><h2 id="projects-title">Things in the making</h2></div><span class="section-aside">Ideas into practice</span></div><div id="project-list" class="project-grid"></div></section>
-      <section id="experience" class="section" aria-labelledby="experience-title">
-        <div class="section-heading"><div><p class="eyebrow section-number">05 / EXPERIENCE</p><h2 id="experience-title">Academic life</h2></div></div>
-        <div class="experience-grid"><article class="experience-card"><div class="card-heading"><svg class="icon" aria-hidden="true"><use href="#i-cap" /></svg><h3>Education</h3></div><div id="education-list"></div></article><article class="experience-card"><div class="card-heading"><svg class="icon" aria-hidden="true"><use href="#i-people" /></svg><h3>Teaching & service</h3></div><div id="service-list"></div></article></div><div id="awards-list"></div>
-      </section>
-      <section id="contact" class="section contact-section" aria-labelledby="contact-title"><p class="eyebrow">GOOD RESEARCH STARTS WITH A CONVERSATION</p><div class="contact-row"><div><h2 id="contact-title">Let’s connect<span class="heading-dot">.</span></h2><p>For research conversations, ideas, and collaborations.</p></div><div id="contact-links"></div></div></section>
-    </main>
-  </div>
-  <footer class="site-footer"><div><span>© <span id="year"></span> Jiahao Liu</span><span class="footer-note">Always learning. Always a work in progress.</span></div><div><a href="https://github.com/JiahaoLiu5/jiahaoliu5.github.io" aria-label="Website source on GitHub">Source<svg class="icon" aria-hidden="true"><use href="#i-code" /></svg></a><a href="#main">Back to top<span aria-hidden="true">↑</span></a></div></footer>
-  <dialog id="citation-dialog" class="citation-dialog" aria-labelledby="citation-title"><div class="dialog-heading"><h2 id="citation-title">Citation</h2><button id="close-citation" class="icon-button" aria-label="Close citation" type="button"><svg class="icon" aria-hidden="true"><use href="#i-close" /></svg></button></div><pre id="citation-text" tabindex="0"></pre><button id="copy-citation" class="primary-button" type="button">Copy BibTeX</button><p id="citation-status" class="quiet-text" role="status"></p></dialog>
-  <noscript><p class="noscript-note">JavaScript is needed to display the complete profile and research lists. You can also find Jiahao on <a href="https://github.com/JiahaoLiu5">GitHub</a>.</p></noscript>
-</body>
-</html>
+---
+layout: default
+anchors: true
+---
+{% include masthead.html %}
+
+{% include section-biography.html %}
+
+{% include section-news.html %}
+
+{% include section-publications.html %}

@@ -1,0 +1,15 @@
+<section class="section-block publications" id="publications">
+  <h2>Research Experiences</h2>
+
+  {%- if site.data.profile.scholar_url %}
+  <p>You can also check my <a href="{{ site.data.profile.scholar_url }}" target="_blank" rel="noopener">Google Scholar</a> profile.</p>
+  {%- endif %}
+
+  {%- for card in site.data.publications %}
+  {% include publication-card.html card=card %}
+  {%- endfor %}
+
+  {%- for card in site.data.projects %}
+  {% include publication-card.html card=card %}
+  {%- endfor %}
+</section>

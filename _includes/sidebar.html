@@ -1,0 +1,43 @@
+<aside class="sidebar">
+  {%- comment -%}
+  Avatar only. The name is deliberately absent: the home page carries it in the
+  masthead and every page carries it in the top-bar wordmark, so putting it
+  here as well made the rail a different shape on the home page than on the
+  subpages. A sidebar that changes between pages reads as a bug.
+  {%- endcomment -%}
+  <div class="sidebar-head">
+    <figure>
+      <img src="{{ site.data.profile.avatar | relative_url }}" alt="{{ site.data.profile.avatar_alt }}"
+           width="160" height="160" />
+    </figure>
+  </div>
+
+  {%- comment -%}
+  Affiliation, city, email. Set in mono: these are literals, and a monospaced
+  face marks them as such without spending a colour on it.
+  {%- endcomment -%}
+  <address class="contact">
+    {%- for line in site.data.profile.address %}
+    <p>{{ line }}</p>
+    {%- endfor %}
+    {%- for e in site.data.profile.emails %}
+    <p><a href="mailto:{{ e }}">{{ e }}</a></p>
+    {%- endfor %}
+  </address>
+
+  <div class="social">
+    {%- for s in site.data.profile.socials %}
+    <a href="{{ s.url | relative_url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}"><i class="{{ s.icon }}" aria-hidden="true"></i></a>
+    {%- endfor %}
+  </div>
+
+  {%- if page.anchors %}
+  <nav aria-label="Sections">
+    <ul>
+      {%- for n in site.data.nav %}
+      <li><a href="#{{ n.anchor }}">{{ n.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  {%- endif %}
+</aside>

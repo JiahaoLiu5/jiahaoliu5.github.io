@@ -1,0 +1,8 @@
+- label: Home
+  url: /
+- label: Service
+  url: /service/
+# Add CV once a real PDF is supplied:
+# - label: CV
+#   url: /assets/docs/Jiahao_Liu_CV.pdf
+#   external: true

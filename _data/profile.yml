@@ -1,0 +1,22 @@
+# Replace the placeholders here when your information is ready.
+name: Jiahao Liu
+name_cn: ""
+role_full: |
+  Ph.D. Student<br />
+  <span class="affil">[University / Institution]</span>
+portrait: assets/img/portrait-placeholder.svg
+portrait_alt: Portrait placeholder for Jiahao Liu
+avatar: assets/img/avatar-placeholder.svg
+avatar_alt: Avatar placeholder for Jiahao Liu
+address:
+  - "[University / Institution]"
+  - "[City, Country]"
+emails: []
+socials:
+  - label: GitHub
+    url: https://github.com/JiahaoLiu5
+    icon: fa-brands fa-github-square svg-inline--fa fa-w-16 fa-2x
+interests:
+  - "[Research interest 1]"
+  - "[Research interest 2]"
+  - "[Research interest 3]"

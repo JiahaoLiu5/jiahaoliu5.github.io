@@ -1,0 +1,5 @@
+- label: "[Date]"
+  body: "News and updates to be added."
+- label: "[Date]"
+  body: "Earlier news to be added."
+  collapsed: true

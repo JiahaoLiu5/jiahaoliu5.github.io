@@ -1,69 +1,41 @@
-# 内容补充指南
+# 内容填写指南
 
-网站的资料集中在 `src/content.js`。保留 `null` 或空数组 `[]` 时，页面会显示明确的占位内容，不会生成不存在的论文、邮箱或下载链接。个人图片和文件存放在 `public/` 下，修改后推送到 `main` 会自动构建、发布并检查公网网站。
+此版本直接使用 Yixuan Yang 仓库的页面模板、CSS 和交互脚本。请在下列位置更新内容；不用再修改旧的 `src/content.js`，它已移除。
 
-## 个人资料
-
-`profile` 中可以填写：
-
-| 字段 | 内容 |
+| 内容 | 文件 |
 | --- | --- |
-| `name`, `initials`, `role` | 姓名、姓名缩写、学术身份 |
-| `institution`, `department`, `location` | 院校、院系或课题组、地点 |
-| `biography` | 简介段落数组；使用纯文本，不需要写 HTML |
-| `interests` | 研究兴趣数组 |
-| `photo`, `photoAlt` | 照片路径与替代文字 |
-| `email`, `cv` | 邮箱地址、CV 文件路径 |
-| `scholar`, `github`, `linkedin`, `orcid` | 真实个人主页链接 |
-| `status` | 左侧资料状态；完成后设为 `null` 隐藏 |
+| 姓名、学校、身份、照片、城市、邮箱、社交链接、研究兴趣 | `_data/profile.yml` |
+| About Me 正文 | `_includes/section-biography.html` |
+| News；`collapsed: true` 为折叠的旧消息 | `_data/news.yml` |
+| 研究论文，当前 3 个占位项 | `_data/publications.yml` |
+| 其他项目，当前 1 个占位项 | `_data/projects.yml` |
+| Academic Service | `_data/service.yml` |
+| 顶栏页面链接与 CV 链接 | `_data/pages.yml` |
+| 左侧章节导航 | `_data/nav.yml` |
+| 网站标题、描述、正式域名 | `_config.yml` |
+| 原版排版、配色、响应式布局 | `css/yixuan.css` |
 
-头像可以上传为 `public/images/portrait.jpg`，然后填写 `photo: 'images/portrait.jpg'`。建议提供较清晰的方形或近方形原图，页面会保持比例裁剪。
+照片和项目图片放在 `assets/img/`，PDF 放在 `assets/docs/`。数据中的本地路径使用 `assets/img/filename.jpg` 这样的格式。将来可以直接替换占位图的路径；研究图片不必强行裁成统一比例。
 
-CV 可以上传为 `public/files/cv.pdf`，然后填写 `cv: 'files/cv.pdf'`。路径不需要写 `public/`。将图片和文件实际上传后再填写对应链接。
+研究项目保留原模板的字段，例如：
 
-## 动态、研究和教育
-
-- `news`：`{ date: 'YYYY-MM-DD', text: '真实动态', url: null }`。
-- `research`：`{ title: '研究方向', description: '简要介绍', url: null }`。
-- `education`：`{ title: '学位或身份', institution: '院校', period: '时间', current: true }`。
-- `service`：教学、指导、审稿等，格式为 `{ title, description, period: null, url: null }`。
-- `awards`：`{ title, organization: null, year: null, url: null }`；无内容时整块隐藏。
-
-## 论文
-
-在 `publications` 中增加真实条目后，会自动显示检索框、年份筛选、作者和链接。空列表显示的是标注为 Layout preview 的占位版式，不计作真实论文。
-
-```js
-{
-  id: 'unique-paper-id',
-  title: '真实论文标题',
-  authors: ['Jiahao Liu', '合作者姓名'],
-  venue: '会议或期刊',
-  year: 2026,
-  image: 'images/paper-figure.png',
-  imageAlt: '论文示意图的简短说明',
-  abstract: '真实摘要',
-  bibtex: null,
-  links: [
-    { label: 'Paper', url: 'https://实际论文地址' },
-    { label: 'Code', url: 'https://实际代码地址' },
-  ],
-}
+```yaml
+- slug: a-unique-project-id
+  media:
+    type: image
+    src: assets/img/project.jpg
+    alt: Description of the actual project figure
+  title: Actual project title
+  authors: "Author One, <b>Jiahao Liu</b>, Author Three"
+  venue: "Actual venue and year"
+  links:
+    - label: Paper
+      url: https://example.org/actual-paper
+    - label: Code
+      url: https://github.com/actual-owner/actual-repository
+  summary: "A short description of the actual work."
 ```
 
-`bibtex` 可填写完整 BibTeX 字符串；填写后会显示引用弹窗和复制按钮。图片、摘要和资源链接都可省略。本人姓名与 `profile.name` 一致时，会自动强调显示。
+只有提供真实链接时再添加 `links`、`title_url`、Google Scholar 或 CV。当前没有放置失效的下载按钮或他人的联系方式。`scholar_url` 可加到 `_data/profile.yml`，届时 Research Experiences 上方会显示 Google Scholar 链接。照片目前为明确占位图，没有使用原作者照片。
 
-## 项目
-
-`projects` 中填写 `{ title, description, tags: [], image: null, imageAlt: '', links: [{ label, url }] }`。目前唯一真实条目是已发布的个人网站；研究项目预览明确标注为待添加。
-
-## 风格与发布
-
-- `src/style.css`：开头的颜色变量控制浅色与深色主题；页面使用本地系统字体，不依赖第三方字体服务。
-- `index.html`：浏览器标题、搜索摘要、社交分享信息、canonical 地址。
-- `public/favicon.svg`：网站图标。
-- `npm run build`：构建。
-- `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test`：本地浏览器检查。
-- 推送到 `main`：GitHub Actions 依次构建、测试、发布，再用浏览器检查真实公网地址。
-
-购买个人域名后，继续使用同一仓库和更新流程：在 Pages 中设置 Custom domain，在域名注册商处配置 DNS，更新 `index.html` 的 canonical 和 `og:url`，然后重新部署。
+更新后运行 `npm run build`，再运行浏览器测试。提交到 `main` 后自动发布。自购域名时修改 `_config.yml` 的 `url`，同时完成 GitHub Pages 和域名注册商的 DNS 设置。
