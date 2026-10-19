@@ -1,6 +1,6 @@
 # Jiahao Liu · Personal website
 
-A responsive personal website built with Vite, HTML, CSS, and JavaScript. It uses system fonts and has no third-party runtime services or required credentials.
+A responsive academic homepage for Jiahao Liu, built with Vite, HTML, CSS, and JavaScript. It uses system fonts and has no third-party runtime services or required credentials.
 
 Website: **https://jiahaoliu5.github.io/**
 
@@ -17,12 +17,9 @@ Vite uses port 5173 by default. The cloud workspace and a local checkout are sep
 
 ## Edit content
 
-- `index.html`: introduction, about section, contact links, page title, and social metadata.
-- `src/content.js`: projects. Add objects to the array to show more projects.
-- `src/style.css`: colors, typography, layout, and mobile styles.
-- `public/favicon.svg`: browser icon.
+See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for the profile, photos, CV, publications, projects, and academic timeline schemas. All personal content is centralized in `src/content.js`; empty fields render honest placeholders. No unverified university, advisor, publications, awards, email, or personal photos are included.
 
-Only the owner's name and public GitHub links have been filled in. The introductory copy is a starter; replace it with your own biography. No unverified work history, publications, or email address is included.
+The design includes a profile sidebar, academic sections, responsive navigation, a persistent light/dark theme, and structured publication rendering. The references and their access limitations are recorded in [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md).
 
 ## Verify
 
@@ -33,7 +30,7 @@ npm test
 npm run preview
 ```
 
-The browser tests exercise the production build, project rendering, navigation, mobile menu, keyboard skip link, and favicon. If Chromium is installed by the environment, use its executable instead of downloading a browser:
+The browser tests exercise the production build, academic content, missing-field handling, navigation, mobile menu, theme persistence, unavailable browser storage, keyboard skip link, favicon, and multiple screen widths. If Chromium is installed by the environment, use its executable instead of downloading a browser:
 
 ```sh
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test
