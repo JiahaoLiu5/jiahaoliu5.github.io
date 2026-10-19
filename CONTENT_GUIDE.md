@@ -11,14 +11,14 @@
 | 其他项目，当前 1 个占位项 | `_data/projects.yml` |
 | Academic Service | `_data/service.yml` |
 | 顶栏页面链接与 CV 链接 | `_data/pages.yml` |
-| 左侧章节导航 | `_data/nav.yml` |
+| 顶栏 Home 与 Service 之间的章节导航 | `_data/nav.yml` |
 | 网站标题、描述、正式域名 | `_config.yml` |
 | 原版排版、配色、响应式布局 | `css/yixuan.css` |
 | AcademicPages 风格侧栏 | `_includes/sidebar.html`、`css/academic-sidebar.css` |
 
-侧栏的 `sidebar_bio` 是头像下面的简短简介，`location` 是地点，`institution` 是学校。`emails` 填真实邮箱列表；`socials` 中各账号的 `url` 填真实主页链接。`url: null` 会保留带图标的文字占位，不生成可点击的假链接；删除对应条目即可隐藏它。GitHub 已填入你的真实账号。侧栏头像目前使用 AcademicPages 的通用占位图，换照片时修改 `avatar` 和 `avatar_alt`。
+侧栏的 `sidebar_bio` 是头像下面背景框中的简介，按 YAML 列表填写，每项显示为一行；窄屏可自然换行。`location` 是地点，`institution` 是学校，`department` 是院系。`emails` 填真实邮箱列表；`socials` 中各账号的 `url` 填真实主页链接。`url: null` 会保留带图标的文字占位，不生成可点击的假链接；删除对应条目即可隐藏它。Cornell University、院系、Ithaca、邮箱及 GitHub 已按提供的信息填写，Google Scholar、ORCID 和 LinkedIn 链接仍待补充。侧栏头像目前使用 AcademicPages 的通用占位图，换照片时修改 `avatar` 和 `avatar_alt`。
 
-桌面侧栏完整显示资料列表；手机和较窄屏幕通过 `Contact & profiles` 展开资料，保持首屏简洁。下方原有章节导航继续保留。
+桌面侧栏完整显示资料列表；手机和较窄屏幕通过 `Contact & profiles` 展开资料。章节导航在顶部 Home 与 Service 之间，窄屏时自动换行；从 Service 点击章节会回到首页对应位置。`css/navigation.css` 控制布局，`js/navigation.js` 测量顶栏高度，让锚点跳转避开固定导航。
 
 照片和项目图片放在 `assets/img/`，PDF 放在 `assets/docs/`。数据中的本地路径使用 `assets/img/filename.jpg` 这样的格式。将来可以直接替换占位图的路径；研究图片不必强行裁成统一比例。
 

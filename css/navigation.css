@@ -1,0 +1,40 @@
+/* Section links share the top navigation. On narrow screens the links wrap
+   onto a separate row, so every destination remains visible and usable. */
+.topbar nav a { display: block; padding: 4px 0; }
+
+@media (max-width: 1000px) {
+  :root { --topbar-h: 112px; }
+  .topbar .topbar-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 150px 38px;
+    gap: 8px 16px;
+    padding: 12px 24px;
+  }
+  .topbar .wordmark { grid-column: 1; grid-row: 1; }
+  .topbar .topbar-tools { display: contents; }
+  .topbar .topbar-tools nav,
+  .topbar .topbar-tools:focus-within nav { display: block; grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+  .topbar nav ul { flex-wrap: wrap; gap: 4px 24px; }
+  .topbar nav a { font-size: 14px; }
+  .topbar .search { display: block; grid-column: 2; grid-row: 1; width: 100%; }
+  .topbar .search:focus-within { width: 100%; }
+  .topbar .search + .theme-toggle { grid-column: 3; grid-row: 1; margin-left: 0; }
+}
+
+@media (max-width: 700px) {
+  .topbar .topbar-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(40px, 34vw) 34px;
+    gap: 6px 12px;
+    padding-inline: 16px;
+  }
+  .topbar nav ul { gap: 2px 10px; }
+  .topbar nav a { font-size: 13px; }
+  .topbar .search-input { padding: 7px 9px 7px 30px; font-size: 13px; }
+  .topbar .search:not(:focus-within) .search-input::placeholder { opacity: 1; }
+  .topbar .search-results { top: calc(var(--topbar-h) + 4px); }
+}
+
+@media (max-width: 380px) {
+  :root { --topbar-h: 140px; }
+  .topbar .topbar-inner { padding-inline: 12px; gap: 6px 8px; }
+}

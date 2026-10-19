@@ -12,7 +12,11 @@ Copyright (c) 2016 Michael Rose, MIT. See licenses/academicpages-MIT.txt.
     <div class="author__content">
       <h2 class="author__name" itemprop="name">{{ site.data.profile.name | escape }}</h2>
       {%- if site.data.profile.sidebar_bio %}
-      <p class="author__bio" itemprop="description">{{ site.data.profile.sidebar_bio | escape }}</p>
+      <p class="author__bio" itemprop="description">
+        {%- for line in site.data.profile.sidebar_bio %}
+        <span class="author__bio-line">{{ line | escape }}</span>
+        {%- endfor %}
+      </p>
       {%- endif %}
     </div>
 
@@ -25,9 +29,12 @@ Copyright (c) 2016 Michael Rose, MIT. See licenses/academicpages-MIT.txt.
         {%- if site.data.profile.institution %}
         <li><span class="profile-detail"><i class="fa-solid fa-building-columns" aria-hidden="true"></i><span>{{ site.data.profile.institution | escape }}</span></span></li>
         {%- endif %}
+        {%- if site.data.profile.department %}
+        <li><span class="profile-detail"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span>{{ site.data.profile.department | escape }}</span></span></li>
+        {%- endif %}
         {%- if site.data.profile.emails.size > 0 %}
         {%- for email in site.data.profile.emails %}
-        <li><a href="mailto:{{ email | escape }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email{% unless forloop.first %} ({{ forloop.index }}){% endunless %}</span></a></li>
+        <li><a href="mailto:{{ email | escape }}" title="{{ email | escape }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email{% unless forloop.first %} ({{ forloop.index }}){% endunless %}</span></a></li>
         {%- endfor %}
         {%- else %}
         <li><span class="profile-detail profile-detail--placeholder" title="Email address to be added"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email<span class="profile-sr-only"> (to be added)</span></span></span></li>
@@ -45,13 +52,4 @@ Copyright (c) 2016 Michael Rose, MIT. See licenses/academicpages-MIT.txt.
     </details>
   </div>
 
-  {%- if page.anchors %}
-  <nav aria-label="Sections">
-    <ul>
-      {%- for n in site.data.nav %}
-      <li><a href="#{{ n.anchor }}">{{ n.label }}</a></li>
-      {%- endfor %}
-    </ul>
-  </nav>
-  {%- endif %}
 </aside>

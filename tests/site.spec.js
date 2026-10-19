@@ -22,15 +22,15 @@ test('upstream layout, typography, and local assets render without errors', asyn
   expect(failures).toEqual([]);
 });
 
-test('personal details and research are explicit placeholders with no borrowed credentials', async ({ page }) => {
+test('supplied personal details and placeholder research render without borrowed credentials', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('.masthead-role')).toContainText('Ph.D. Student');
-  await expect(page.locator('.masthead-role')).toContainText('[University / Institution]');
+  await expect(page.locator('.masthead-role')).toContainText('Cornell University');
   for (let n = 1; n <= 4; n++) {
     await expect(page.locator(`#project-0${n} .publication-title`)).toHaveText(`[Project Title 0${n}]`);
     await expect(page.getByRole('img', { name: `Image placeholder for research project 0${n}` })).toBeAttached();
   }
-  await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Email', exact: true })).toHaveAttribute('href', 'mailto:jl4226@cornell.edu');
   await expect(page.locator('a[href*="Yixuan_Yang_CV"], a[href*="U97wn_wAAAAJ"], a[href="#"]')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/JiahaoLiu5');
   await expect(page.locator('main')).not.toContainText('Duke University');
@@ -42,13 +42,23 @@ test('academic profile shows the requested information without fake account link
   await page.goto('./');
   const profile = page.getByRole('complementary', { name: 'Profile' });
   await expect(profile.getByRole('heading', { name: 'Jiahao Liu' })).toBeVisible();
-  await expect(profile.locator('.author__bio')).toContainText('Ph.D. student.');
+  await expect(profile.locator('.author__bio-line')).toHaveText([
+    'PhD Student, Cornell University',
+    'HCI & Behavioral Researcher',
+    'VR/AR/MR Expertise',
+  ]);
+  await expect(profile.getByText('Ithaca, NY, USA', { exact: true })).toBeVisible();
+  await expect(profile.getByText('Cornell University', { exact: true })).toBeVisible();
+  await expect(profile.getByText('Dept. of Information Science', { exact: true })).toBeVisible();
   await expect(profile.locator('.author__urls li')).toHaveCount(8);
-  await expect(profile.locator('.author__urls a')).toHaveCount(1);
+  await expect(profile.locator('.author__urls a')).toHaveCount(2);
   await expect(profile.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/JiahaoLiu5');
-  for (const label of ['Email', 'Google Scholar', 'ORCID', 'PubMed', 'Bluesky']) {
+  for (const label of ['Google Scholar', 'ORCID', 'LinkedIn']) {
     await expect(profile.locator('.profile-detail--placeholder').filter({ hasText: label })).toBeVisible();
   }
+  await expect(profile).not.toContainText('PubMed');
+  await expect(profile).not.toContainText('Bluesky');
+  await expect(profile.locator('nav')).toHaveCount(0);
   await page.evaluate(() => document.fonts.ready);
   expect(await page.evaluate(() => document.fonts.check('13px Academicons'))).toBe(true);
 });
@@ -101,14 +111,36 @@ test('earlier news expands and collapses', async ({ page }) => {
 
 test('service page and section navigation work', async ({ page }) => {
   await page.goto('./');
-  await page.getByRole('navigation', { name: 'Sections' }).getByRole('link', { name: 'Research Experiences' }).click();
-  await expect(page).toHaveURL(/#publications$/);
-  await page.getByRole('navigation', { name: 'Pages' }).getByRole('link', { name: 'Service' }).click();
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  await expect(nav.getByRole('link')).toHaveText(['Home', 'About Me', 'News', 'Research Experiences', 'Service']);
+  for (const [label, id] of [['About Me', 'biography'], ['News', 'news'], ['Research Experiences', 'publications']]) {
+    await nav.getByRole('link', { name: label, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    await expect.poll(() => page.locator(`#${id}`).evaluate((section) => section.getBoundingClientRect().top >= document.querySelector('.topbar').getBoundingClientRect().bottom - 1)).toBe(true);
+  }
+  await nav.getByRole('link', { name: 'Service' }).click();
   await expect(page).toHaveTitle('Academic Service · Jiahao Liu');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Academic Service');
   await expect(page.getByText('Academic service to be added.', { exact: true })).toBeVisible();
-  await page.getByRole('link', { name: 'Home', exact: true }).click();
+  await nav.getByRole('link', { name: 'About Me', exact: true }).click();
+  await expect(page).toHaveURL(/\/#biography$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Jiahao Liu');
+});
+
+test('wrapped mobile navigation stays visible and jumps below the sticky header', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto('./');
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  await themeButton(page).click();
+  await expect(nav).toBeVisible();
+  await nav.getByRole('link', { name: 'News', exact: true }).click();
+  await expect(page).toHaveURL(/#news$/);
+  await expect.poll(() => page.locator('#news').evaluate((section) => section.getBoundingClientRect().top >= document.querySelector('.topbar').getBoundingClientRect().bottom - 1)).toBe(true);
+  await nav.getByRole('link', { name: 'Service', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Academic Service');
+  await nav.getByRole('link', { name: 'Research Experiences', exact: true }).click();
+  await expect(page).toHaveURL(/\/#publications$/);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
 test('search indexes placeholder projects and supports keyboard navigation', async ({ page }) => {

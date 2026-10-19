@@ -26,7 +26,7 @@ The tests exercise the production artifact, section navigation, Service page, se
 
 ## Content
 
-Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md). Personal facts have not been inferred. Research entries, photos, affiliation, biography, news, and service use explicit placeholders. No borrowed papers, CV, contact details, analytics account, or research media are published.
+Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md). Cornell affiliation, department, location, email, and the three-line profile biography use information supplied by Jiahao. Research entries, photos, the detailed biography, news, service, and unsupplied academic-profile links remain placeholders. No borrowed papers, CV, contact details, analytics account, or research media are published.
 
 ## Publication
 

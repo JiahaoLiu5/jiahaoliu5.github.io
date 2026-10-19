@@ -3,15 +3,20 @@ name: Jiahao Liu
 name_cn: ""
 role_full: |
   Ph.D. Student<br />
-  <span class="affil">[University / Institution]</span>
+  <span class="affil">Cornell University</span>
 portrait: assets/img/portrait-placeholder.svg
 portrait_alt: Portrait placeholder for Jiahao Liu
 avatar: assets/img/avatar-placeholder.png
 avatar_alt: Avatar placeholder for Jiahao Liu
-sidebar_bio: "Ph.D. student. [Short biography to be added.]"
-location: "[City, Country]"
-institution: "[University / Institution]"
-emails: []
+sidebar_bio:
+  - "PhD Student, Cornell University"
+  - "HCI & Behavioral Researcher"
+  - "VR/AR/MR Expertise"
+location: "Ithaca, NY, USA"
+institution: "Cornell University"
+department: "Dept. of Information Science"
+emails:
+  - jl4226@cornell.edu
 socials:
   - label: Google Scholar
     url: null
@@ -19,15 +24,12 @@ socials:
   - label: ORCID
     url: null
     icon: ai ai-orcid profile-icon--orcid
-  - label: PubMed
-    url: null
-    icon: ai ai-pubmed
   - label: GitHub
     url: https://github.com/JiahaoLiu5
     icon: fa-brands fa-github
-  - label: Bluesky
+  - label: LinkedIn
     url: null
-    icon: fa-brands fa-bluesky profile-icon--bluesky
+    icon: fa-brands fa-linkedin profile-icon--linkedin
 interests:
   - "[Research interest 1]"
   - "[Research interest 2]"

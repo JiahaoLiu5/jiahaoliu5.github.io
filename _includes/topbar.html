@@ -1,6 +1,5 @@
 {%- comment -%}
-Page-level navigation, site search, theme switch. Section anchors live in the
-sidebar.
+Page navigation, home-page section anchors, site search, and theme switch.
 
 Sits on the page ground under a hairline rather than in a filled colour band:
 a navy bar is what the reference site uses, and copying it would make the two
@@ -20,10 +19,15 @@ paint and pop -- on the one control whose whole job is to look settled.
     the navigation across a widget.
     {%- endcomment -%}
     <div class="topbar-tools">
-      <nav aria-label="Pages">
+      <nav aria-label="Main navigation">
         <ul>
           {%- for p in site.data.pages %}
           <li><a href="{{ p.url | relative_url }}"{% if p.external %} target="_blank" rel="noopener"{% endif %}{% if page.url == p.url %} aria-current="page"{% endif %}>{{ p.label }}</a></li>
+          {%- if p.url == '/' %}
+          {%- for section in site.data.nav %}
+          <li><a href="{% if page.anchors %}#{{ section.anchor }}{% else %}{{ '/' | relative_url }}#{{ section.anchor }}{% endif %}">{{ section.label }}</a></li>
+          {%- endfor %}
+          {%- endif %}
           {%- endfor %}
         </ul>
       </nav>

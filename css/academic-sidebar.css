@@ -10,7 +10,7 @@
   padding-bottom: var(--s-2);
 }
 
-.sidebar--academic .author__avatar { margin: 0 0 12px; }
+.sidebar--academic .author__avatar { width: 175px; margin: 0 auto 12px; }
 .sidebar--academic .author__avatar img {
   display: block;
   width: 175px;
@@ -25,35 +25,42 @@
 .sidebar--academic .author__name {
   margin: 0 0 10px;
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 700;
   line-height: 1.4;
   color: inherit;
+  text-align: center;
 }
 .sidebar--academic .author__bio {
   margin: 0 0 18px;
-  font-size: 13px;
-  line-height: 1.6;
+  padding: 12px 10px;
+  border-left: 3px solid var(--brand);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface);
+  color: var(--brand);
+  font-size: 15px;
+  line-height: 1.5;
 }
+.sidebar--academic .author__bio-line { display: block; }
 
 .sidebar--academic .author__toggle { display: none; }
 .sidebar--academic .author__urls { list-style: none; padding: 0; margin: 0; }
-.sidebar--academic .author__urls li { margin: 0; font-size: 13px; line-height: 1.5; }
+.sidebar--academic .author__urls li { margin: 0; font-size: 15px; line-height: 1.4; }
 .sidebar--academic .author__urls a,
 .sidebar--academic .profile-detail {
   display: grid;
-  grid-template-columns: 14px minmax(0, 1fr);
+  grid-template-columns: 16px minmax(0, 1fr);
   align-items: baseline;
   column-gap: 10px;
-  padding: 6px 0;
+  padding: 3px 0;
   color: inherit;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 .sidebar--academic .author__urls a:hover { color: var(--link); text-decoration: underline; }
-.sidebar--academic .author__urls i { width: 14px; text-align: center; }
+.sidebar--academic .author__urls i { width: 16px; text-align: center; }
 .sidebar--academic .profile-icon--orcid { color: #a6ce39; }
-.sidebar--academic .profile-icon--bluesky { color: #1185fe; }
+.sidebar--academic .profile-icon--linkedin { color: #0a66c2; }
 
 .profile-sr-only {
   position: absolute;
@@ -65,10 +72,6 @@
   border: 0;
 }
 
-.sidebar--academic nav { margin-top: 22px; padding-top: 14px; }
-.sidebar--academic nav a { font-size: 13px; font-weight: 500; color: inherit; }
-.sidebar--academic nav li + li { margin-top: 8px; }
-
 @media (max-width: 1000px) {
   .sidebar--academic { display: block; max-height: none; overflow: visible; padding-bottom: var(--s-5); }
   .sidebar--academic .author-profile {
@@ -78,18 +81,18 @@
     row-gap: 6px;
     align-items: start;
   }
-  .sidebar--academic .author__avatar { grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+  .sidebar--academic .author__avatar { grid-column: 1; grid-row: 1; width: 88px; margin: 0; }
   .sidebar--academic .author__avatar img { width: 88px; height: 88px; padding: 3px; }
-  .sidebar--academic .author__content { grid-column: 2; min-width: 0; }
-  .sidebar--academic .author__name { margin-bottom: 4px; }
-  .sidebar--academic .author__bio { margin-bottom: 0; }
-  .sidebar--academic .author__urls-wrapper { grid-column: 2; min-width: 0; }
+  .sidebar--academic .author__content { display: contents; }
+  .sidebar--academic .author__name { grid-column: 2; grid-row: 1; align-self: center; margin: 0; }
+  .sidebar--academic .author__bio { grid-column: 1 / -1; margin: 8px 0 0; }
+  .sidebar--academic .author__urls-wrapper { grid-column: 1 / -1; min-width: 0; }
   .sidebar--academic .author__toggle {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 0;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
     color: var(--link);
     cursor: pointer;
@@ -106,11 +109,10 @@
   .sidebar--academic details[open] > .author__toggle::after { transform: translateY(1px) rotate(225deg); }
   .sidebar--academic .author__toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
   .sidebar--academic .author__urls { margin-top: 6px; }
-  .sidebar--academic nav { margin-top: 16px; padding-top: 0; }
-  .sidebar--academic nav li + li { margin-top: 0; }
 }
 
 @media (max-width: 700px) {
   .sidebar--academic .author-profile { grid-template-columns: 76px minmax(0, 1fr); column-gap: 16px; }
+  .sidebar--academic .author__avatar { width: 76px; }
   .sidebar--academic .author__avatar img { width: 76px; height: 76px; }
 }

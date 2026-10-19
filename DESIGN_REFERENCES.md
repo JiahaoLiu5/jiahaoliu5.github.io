@@ -26,7 +26,7 @@ Inter, Source Serif 4, and JetBrains Mono retain the original family names and a
 
 At the user's request, the sidebar structure and proportions adapt `_includes/author-profile.html` and `_sass/layout/_sidebar.scss` from <https://github.com/academicpages/academicpages.github.io>, source commit `7b958332ce9970cfb6987a049d7684ac615397e8`. The generic `images/profile.png` placeholder from that repository is used as `assets/img/avatar-placeholder.png`; it is not a personal portrait. The upstream MIT license and copyright notice are preserved in `licenses/academicpages-MIT.txt` and in the published artifact.
 
-The adapted sidebar lives in `_includes/sidebar.html`, with isolated styles in `css/academic-sidebar.css`. It retains the existing section links and adds native contact/profile disclosure on narrow screens, managed by `js/sidebar.js`. Identity, biography, location, institution, email, and profile destinations remain editable in `_data/profile.yml`.
+The adapted sidebar lives in `_includes/sidebar.html`, with isolated styles in `css/academic-sidebar.css`. It adds native contact/profile disclosure on narrow screens, managed by `js/sidebar.js`. Identity, three-line biography panel, location, institution, department, email, and profile destinations remain editable in `_data/profile.yml`. The supplied Cornell affiliation, Ithaca location, and institutional email replace their placeholders. The section links now sit between Home and Service in the top navigation; `css/navigation.css` and `js/navigation.js` handle wrapping and sticky-header anchor offsets.
 
 ## Access limitation
 
