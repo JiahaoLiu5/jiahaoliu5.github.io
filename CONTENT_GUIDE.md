@@ -5,14 +5,14 @@
 | 内容 | 位置 |
 | --- | --- |
 | 姓名、身份、学校、院系、头像、邮箱、社交链接、导航和正式域名 | `content/config.toml` |
-| 首页问候语、自我介绍、照片墙、照片下方简介 | `content/home.toml` |
+| 首页问候语、自我介绍、三个研究主题、后续简介 | `content/home.toml` |
 | 首页研究列表及研究详情页 | `content/research.toml` |
 | CV 内容 | `content/cv.md` |
 | Academic Service 内容 | `content/service.md` |
 | 图片 | `public/images/` |
 | 全站配色、字体、首页布局 | `src/app/globals.css` |
 
-首页照片墙是 3 列、每列 2 张，共 6 张。`photos` 数组按列填写；当前顺序为：短/长、长/短、短/长。`shape` 为 `short` 或 `tall`，使用 `src` 指向图片，并为 `alt` 填真实描述。把现在的 `/images/photo-01.svg` 等路径换成你的照片即可。头像路径在 `content/config.toml` 的 `author.avatar`。供图后也请更新头像的替代文字。
+首页的 `themes` 数组包含三个研究主题，按展示顺序填写 `title`、`keywords`、`src` 和图片描述 `alt`。标题由你提供，关键词暂为建议；三张图是生成的主题示意占位图，并非你的研究实拍。提供图片后替换 `src`，同时更新 `alt`。桌面端三列之间留有间隔；主要内容区域宽度不超过 700px 时，改为纵向排列，避免有侧边栏的平板布局挤压标题。头像路径在 `content/config.toml` 的 `author.avatar`。供图后也请更新头像的替代文字。
 
 自我介绍支持 Markdown；链接显示为红色。已有的学校、院系和联系方式来自你提供的信息。教育经历、导师、实验室、论文和时间没有推测填写。
 

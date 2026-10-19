@@ -5,32 +5,22 @@ I'm currently working on my Ph.D. in [Information Science](https://infosci.corne
 background = "Education, previous research experience, and collaborations — to be added."
 research_label = "research"
 
-[[photos]]
-src = "/images/photo-01.svg"
-alt = "Photo placeholder 01: people and collaborations"
-shape = "short"
+# Theme titles supplied by Jiahao. Keywords are initial suggestions;
+# images are generated illustrative placeholders, not photographs of his work.
+[[themes]]
+title = "Human Interaction Behavior in Immersive XR"
+keywords = ["Immersive interaction", "Human behavior", "User experience"]
+src = "/images/theme-immersive-xr.webp"
+alt = "Illustrative placeholder: a headset wearer interacting with spatial targets in an XR lab"
 
-[[photos]]
-src = "/images/photo-02.svg"
-alt = "Photo placeholder 02: campus and places"
-shape = "tall"
+[[themes]]
+title = "Human Interaction with Embodied AI Agent"
+keywords = ["Embodied AI", "Human–agent interaction", "Social presence"]
+src = "/images/theme-embodied-ai.webp"
+alt = "Illustrative placeholder: a researcher interacting with an embodied robot at a table"
 
-[[photos]]
-src = "/images/photo-03.svg"
-alt = "Photo placeholder 03: portrait"
-shape = "tall"
-
-[[photos]]
-src = "/images/photo-04.svg"
-alt = "Photo placeholder 04: a group photo"
-shape = "short"
-
-[[photos]]
-src = "/images/photo-05.svg"
-alt = "Photo placeholder 05: research and everyday life"
-shape = "short"
-
-[[photos]]
-src = "/images/photo-06.svg"
-alt = "Photo placeholder 06: a favorite place"
-shape = "tall"
+[[themes]]
+title = "Real-World Application of XR Technology"
+keywords = ["Applied XR", "Real-world contexts", "Human-centered design"]
+src = "/images/theme-applied-xr.webp"
+alt = "Illustrative placeholder: an engineer using augmented reality to inspect a physical machine"

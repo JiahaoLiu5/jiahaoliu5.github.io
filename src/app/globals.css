@@ -112,19 +112,25 @@ button { cursor: pointer; }
 .profile-interests ul { margin: 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.7; color: var(--neutral-600); }
 .profile-cv { display: inline-flex; align-items: center; gap: 7px; margin-top: 24px; color: var(--primary); text-decoration: none; font-size: 13px; }
 .profile-cv:hover { color: var(--accent); }
-.home-content { min-width: 0; }
+.home-content { min-width: 0; container: home / inline-size; }
 .intro-section h1 { font-size: 28px; letter-spacing: -.035em; line-height: 1.2; font-weight: 750; margin: 0 0 30px; color: var(--primary); }
 .intro-copy, .background-copy { font-size: 17px; line-height: 1.6; }
 .intro-copy p, .background-copy p { margin: 0; }
 .intro-copy strong { font-weight: 500; }
 .intro-copy a, .background-copy a { color: var(--accent); text-decoration: none; }
 .intro-copy a:hover, .background-copy a:hover { text-decoration: underline; }
-.photo-wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 30px 0; }
-.photo-column { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.photo-tile { position: relative; margin: 0; border-radius: 9px; overflow: hidden; background: var(--neutral-100); }
-.photo-tile img { object-fit: cover; }
-.photo-short { aspect-ratio: 4 / 3; }
-.photo-tall { aspect-ratio: 2 / 3; }
+.research-themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 32px 0 36px; }
+.research-theme { min-width: 0; display: grid; grid-template-rows: auto 1fr auto; }
+.theme-image { position: relative; aspect-ratio: 1; margin: 0 0 17px; border-radius: 4px; overflow: hidden; background: var(--neutral-100); }
+.theme-image img { object-fit: cover; }
+.theme-title { margin: 0; font-size: 22px; line-height: 1.16; letter-spacing: -.035em; font-weight: 820; color: var(--primary); text-wrap: balance; }
+.theme-keywords { margin: 9px 0 0; font-size: 14px; line-height: 1.55; font-weight: 400; color: var(--neutral-500); }
+/* Stack by the actual content width, including when the profile rail is present. */
+@container home (max-width: 700px) {
+  .research-themes { grid-template-columns: 1fr; gap: 32px; }
+  .theme-image { aspect-ratio: 3 / 2; margin-bottom: 16px; }
+  .theme-title { font-size: 25px; text-wrap: initial; }
+}
 .background-copy { margin: 30px 0 22px; }
 .research-section { border-top: 1px solid var(--rule); padding-top: 20px; scroll-margin-top: 96px; }
 .research-list { margin: 0; padding: 0; list-style: none; }
@@ -146,7 +152,6 @@ button { cursor: pointer; }
 @media (max-width: 1000px) {
   .home-layout { grid-template-columns: 208px minmax(0, 1fr); gap: 36px; padding-top: 36px; }
   .profile-image { width: 196px; height: 196px; }
-  .photo-wall, .photo-column { gap: 12px; }
 }
 @media (max-width: 760px) {
   .header-inner { padding: 10px 22px; min-height: 65px; }
@@ -171,9 +176,7 @@ button { cursor: pointer; }
   .profile-interests, .profile-cv { display: none; }
   .intro-section h1 { font-size: 26px; margin-bottom: 22px; }
   .intro-copy, .background-copy { font-size: 16px; line-height: 1.65; }
-  .photo-wall { margin: 24px 0; }
-  .photo-wall, .photo-column { gap: 10px; }
-  .photo-tile { border-radius: 6px; }
+  .research-themes { margin: 28px 0; }
   .background-copy { margin: 24px 0; }
   .footer-inner { padding: 22px; flex-wrap: wrap; }
 }
@@ -183,7 +186,6 @@ button { cursor: pointer; }
   .prism-profile { grid-template-columns: 88px minmax(0, 1fr); gap: 8px 14px; }
   .profile-image { width: 88px; height: 88px; }
   .profile-heading h2 { font-size: 23px; }
-  .photo-wall, .photo-column { gap: 7px; }
   .research-title-line h3 { font-size: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {

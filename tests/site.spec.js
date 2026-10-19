@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
 
-test('PRISM homepage renders the profile, photo wall, and research list without failures', async ({ page }) => {
+test('PRISM homepage renders the profile, research themes, and research list without failures', async ({ page }) => {
   const errors=[];
   const bad=[];
   page.on('pageerror', e=>errors.push(e.message));
@@ -14,8 +14,13 @@ test('PRISM homepage renders the profile, photo wall, and research list without 
   await expect(profile).toContainText('Cornell University');
   await expect(profile.getByRole('link',{name:'Email',exact:true})).toHaveAttribute('href','mailto:jl4226@cornell.edu');
   await expect(profile.getByRole('link',{name:'GitHub',exact:true})).toHaveAttribute('href','https://github.com/JiahaoLiu5');
-  await expect(page.locator('.photo-column')).toHaveCount(3);
-  await expect(page.locator('.photo-tile img')).toHaveCount(6);
+  const themes = page.getByRole('region', { name: 'Research themes' });
+  await expect(themes.getByRole('article')).toHaveCount(3);
+  await expect(themes.getByRole('heading')).toHaveText([
+    'Human Interaction Behavior in Immersive XR',
+    'Human Interaction with Embodied AI Agent',
+    'Real-World Application of XR Technology',
+  ]);
   await expect(page.locator('.research-list li')).toHaveCount(5);
   await page.evaluate(()=>document.fonts.ready);
   expect(await page.locator('img').evaluateAll(images=>images.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src))).toEqual([]);
@@ -25,7 +30,7 @@ test('PRISM homepage renders the profile, photo wall, and research list without 
 
 test('template media and projects remain explicit placeholders', async ({page})=>{
   await page.goto('./');
-  await expect(page.getByRole('img',{name:/Photo placeholder/})).toHaveCount(6);
+  await expect(page.getByRole('img',{name:/Illustrative placeholder:/})).toHaveCount(3);
   await expect(page.getByRole('img',{name:'Portrait placeholder for Jiahao Liu'})).toBeVisible();
   await expect(page.getByRole('heading',{name:'Research Project 01',exact:true})).toBeVisible();
   await expect(page.locator('.research-date')).toHaveText(Array(5).fill('Date pending'));
@@ -120,11 +125,22 @@ test('static HTML is readable without JavaScript and keyboard skip link works',a
 });
 
 for(const width of [320,390,768,1440]){
-  test(`profile and photo wall fit ${width}px without horizontal scrolling`,async({page})=>{
+  test(`profile and research themes fit ${width}px without horizontal scrolling`,async({page})=>{
     await page.setViewportSize({width,height:900});
     await page.goto('./');
     await page.evaluate(()=>document.fonts.ready);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
-    await expect(page.locator('.photo-wall')).toHaveCSS('grid-template-columns',/\d/);
+    const cards = page.getByRole('region', { name: 'Research themes' }).getByRole('article');
+    const bounds = await cards.evaluateAll(elements => elements.map(element => {
+      const { x, y } = element.getBoundingClientRect();
+      return { x, y };
+    }));
+    if (width === 1440) {
+      expect(bounds.every(card => card.y === bounds[0].y)).toBe(true);
+      expect(bounds[1].x).toBeGreaterThan(bounds[0].x);
+    } else {
+      expect(bounds.every(card => card.x === bounds[0].x)).toBe(true);
+      expect(bounds[1].y).toBeGreaterThan(bounds[0].y);
+    }
   });
 }

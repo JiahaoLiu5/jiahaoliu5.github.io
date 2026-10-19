@@ -8,9 +8,13 @@ The homepage, profile, navigation, and footer are adapted to the supplied refere
 
 ## Homepage reference
 
-The user supplied a screenshot of Jonathan Segal's homepage. This is the visual reference for the greeting, red inline links, three-column photo wall with alternating short/tall frames, second biography paragraph, and compact research list with bold titles and small date/venue lines. The screenshot's personal biography, research titles, dates, venues, and photographs were not copied as Jiahao's work or experiences.
+The user supplied a screenshot of Jonathan Segal's homepage. This is the visual reference for the greeting, red inline links, second biography paragraph, and compact research list with bold titles and small date/venue lines. The original photo wall was subsequently replaced at the user's request by three research-theme cards. A user-supplied MIT Media Lab screenshot guides the image-above-title arrangement, gray secondary text, and editorial typography; the cards add gutters. Neither reference's biography, research records, or photographs are presented as Jiahao's work or experiences.
 
-Six explicitly labeled image placeholders and five project placeholders are used until Jiahao supplies real media and research records. Profile facts come only from information Jiahao supplied: Cornell University, Information Science, Ph.D. student, Ithaca, HCI/behavioral research, immersive technologies, institutional email, and GitHub account.
+Three generated illustrative image placeholders and five project placeholders are used until Jiahao supplies real media and research records. The theme titles are Jiahao's own; keywords are provisional suggestions. Profile facts come only from information Jiahao supplied: Cornell University, Information Science, Ph.D. student, Ithaca, HCI/behavioral research, immersive technologies, institutional email, and GitHub account.
+
+## Research-theme images
+
+`theme-immersive-xr.webp`, `theme-embodied-ai.webp`, and `theme-applied-xr.webp` were generated for this layout as generic illustrations of immersive interaction, human–agent interaction, and applied XR. They do not depict Jiahao, his participants, or actual research results. Alternative text identifies them as illustrative placeholders. The files are served locally; no external image service is required to view the website.
 
 ## Portrait placeholder
 

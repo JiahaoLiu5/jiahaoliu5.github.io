@@ -3,5 +3,5 @@ export interface HomeContent {
   intro: string;
   background: string;
   research_label: string;
-  photos: Array<{ src: string; alt: string; shape: 'short' | 'tall' }>;
+  themes: Array<{ title: string; keywords: string[]; src: string; alt: string }>;
 }
