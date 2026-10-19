@@ -1,0 +1,57 @@
+[site]
+title = "Jiahao Liu"
+description = "Jiahao Liu — Ph.D. student in Information Science at Cornell University. Human-computer interaction, behavioral research, and immersive technologies."
+url = "https://jiahaoliu5.github.io"
+favicon = "/favicon.svg"
+last_updated = "October 19, 2026"
+
+[author]
+name = "Jiahao Liu"
+title = "Ph.D. Student"
+institution = "Cornell University"
+institution_url = "https://www.cornell.edu/"
+department = "Information Science"
+avatar = "/images/profile-placeholder.png"
+
+[social]
+email = "jl4226@cornell.edu"
+location = "Ithaca, NY, USA"
+github = "https://github.com/JiahaoLiu5"
+# Add your actual Google Scholar, ORCID, and LinkedIn URLs when ready.
+
+[features]
+enable_likes = false
+enable_one_page_mode = false
+
+[i18n]
+enabled = false
+locales = ["en"]
+default_locale = "en"
+mode = "fixed"
+fixed_locale = "en"
+persist = false
+switcher = false
+
+[[navigation]]
+title = "Home"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "Research"
+type = "section"
+target = "research"
+href = "/#research"
+
+[[navigation]]
+title = "CV"
+type = "page"
+target = "cv"
+href = "/cv/"
+
+[[navigation]]
+title = "Service"
+type = "page"
+target = "service"
+href = "/service/"

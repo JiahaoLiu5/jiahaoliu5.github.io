@@ -25,13 +25,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Check source
+        run: npm run lint
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Build for the configured site path
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
-        run: npm run build -- --base "${BASE_PATH}/"
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: npm run build
       - name: Install browser for smoke tests
         run: npx playwright install --with-deps chromium
       - name: Test the production build
@@ -40,7 +43,7 @@ jobs:
         run: npm test
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: out
 
   deploy:
     needs: build

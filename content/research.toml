@@ -1,0 +1,38 @@
+type = "card"
+title = "Research"
+description = "Project titles and publication details will be added here."
+
+[[items]]
+id = "project-01"
+title = "Research Project 01"
+subtitle = "Publication / venue to be added"
+date = "Date pending"
+content = "Research description to be added."
+
+[[items]]
+id = "project-02"
+title = "Research Project 02"
+subtitle = "Publication / venue to be added"
+date = "Date pending"
+content = "Research description to be added."
+
+[[items]]
+id = "project-03"
+title = "Research Project 03"
+subtitle = "Publication / venue to be added"
+date = "Date pending"
+content = "Research description to be added."
+
+[[items]]
+id = "project-04"
+title = "Research Project 04"
+subtitle = "Publication / venue to be added"
+date = "Date pending"
+content = "Research description to be added."
+
+[[items]]
+id = "project-05"
+title = "Research Project 05"
+subtitle = "Publication / venue to be added"
+date = "Date pending"
+content = "Research description to be added."

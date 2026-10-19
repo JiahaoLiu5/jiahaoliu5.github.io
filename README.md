@@ -1,10 +1,8 @@
-# Jiahao Liu's academic homepage
+# Jiahao Liu — Personal website
 
-Website: <https://jiahaoliu5.github.io/> · Repository: <https://github.com/JiahaoLiu5/jiahaoliu5.github.io>
+Live site: <https://jiahaoliu5.github.io/>
 
-This version directly adapts [Yixuan Yang's website source](https://github.com/YeungYathin/YeungYathin.github.io) at commit `bab9481cf9700d0e07d4138debec7c5d46aa35b9`. Its layouts, includes, stylesheet, and JavaScript replace the previous design. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for the source record and changes.
-
-The profile sidebar adapts [AcademicPages](https://github.com/academicpages/academicpages.github.io): a circular portrait, name, short biography, and vertically aligned contact/profile icons. Unknown account links remain text placeholders. Its CSS and responsive disclosure script are scoped separately; the original main-page stylesheet and script remain unchanged. Third-party notices are in `licenses/` and included in the published artifact.
+Built from [PRISM](https://github.com/xyjoey/PRISM), with a homepage adapted to the supplied Jonathan Segal screenshot: black text, red links, a three-column photo wall, and a compact research list. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md). The earlier website is safely preserved in the [archive branch](https://github.com/JiahaoLiu5/jiahaoliu5.github.io/tree/archive/academicpages-6aa7332); recovery details are in [ARCHIVE.md](ARCHIVE.md).
 
 ## Development
 
@@ -12,26 +10,24 @@ Node.js 24 is available in the cloud environment.
 
 ```sh
 npm --cache /workspace/.cache/npm ci
-npm run dev -- --port 5173 --strictPort
+npm run dev -- --hostname 0.0.0.0 --port 5173
 ```
 
-The development server renders the original Liquid templates and rebuilds when content, styles, or templates change. No Ruby installation is required: `scripts/build.mjs` uses LiquidJS and YAML to render the source templates into static HTML. Vite serves the generated pages for local development and tests. The original Google Fonts families and Font Awesome 6.7.0 are bundled locally with their licenses.
+PRISM uses Next.js, React, TypeScript, and Tailwind CSS. Fonts and images are served locally; no external font CDN or application secret is required.
 
 ```sh
+npm run typecheck
+npm run lint
 npm run build
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test
 ```
 
-The tests exercise the production artifact, section navigation, Service page, search, disclosures, themes, assets, and responsive layouts. `npm run build -- --base /some-path/` supports deployment below a path; GitHub Actions supplies the configured Pages base path. The inherited legacy `#reviewer` redirect in `js/site.js` assumes a domain-root site, as upstream does.
+`npm run preview -- --port 4173` serves the static `out/` artifact. Tests cover rendering, the six photo slots, research detail links, CV/service navigation, mobile menu, themes, unavailable storage, JavaScript-disabled rendering, keyboard navigation, and responsive layouts.
 
-## Content
+## Content and publication
 
-Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md). Cornell affiliation, department, location, email, and the three-line profile biography use information supplied by Jiahao. Research entries, photos, the detailed biography, news, service, and unsupplied academic-profile links remain placeholders. No borrowed papers, CV, contact details, analytics account, or research media are published.
+Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md). User-supplied facts are retained; photos, research records, and unavailable academic details remain explicitly marked placeholders. Template demo biographies and publications are removed.
 
-## Publication
+Push source to `main`. `.github/workflows/deploy.yml` builds `out/`, tests the static artifact, deploys GitHub Pages, then verifies the public site in Chrome. Pages must remain configured with Source: GitHub Actions. The build reads `BASE_PATH` from Pages and prefixes static assets/links for a subpath when needed. The historical repository mount remains `/workspace/personal-website`.
 
-Push source changes to `main`. `.github/workflows/deploy.yml` builds `dist`, runs browser tests, deploys through GitHub Pages, then verifies the public site in Chrome. Pages must remain configured with **Source: GitHub Actions**. Files in `dist` are generated and not committed.
-
-## Future custom domain
-
-After purchasing a domain, add it in the repository's Pages **Custom domain** settings and configure the registrar's DNS using GitHub's current instructions. Update `url` in `_config.yml` to the new HTTPS origin and redeploy; canonical links are generated from it. Keep `baseurl` empty for a root domain. Do not add a domain or DNS settings before ownership is established. The existing GitHub Pages publication workflow can continue to serve the site.
+For a future purchased domain, set Pages Custom domain and registrar DNS, update `site.url` in `content/config.toml`, then redeploy. A root domain uses an empty base path. No unpurchased domain is configured.

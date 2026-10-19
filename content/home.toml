@@ -1,0 +1,36 @@
+greeting = "Hi, I'm Jiahao Liu"
+intro = """
+I'm currently working on my Ph.D. in [Information Science](https://infosci.cornell.edu/) at [Cornell University](https://www.cornell.edu/), based in Ithaca, New York. My work spans **human–computer interaction**, **behavioral research**, and **virtual, augmented, and mixed reality**. More about my current research and collaborations will be added here.
+"""
+background = "Education, previous research experience, and collaborations — to be added."
+research_label = "research"
+
+[[photos]]
+src = "/images/photo-01.svg"
+alt = "Photo placeholder 01: people and collaborations"
+shape = "short"
+
+[[photos]]
+src = "/images/photo-02.svg"
+alt = "Photo placeholder 02: campus and places"
+shape = "tall"
+
+[[photos]]
+src = "/images/photo-03.svg"
+alt = "Photo placeholder 03: portrait"
+shape = "tall"
+
+[[photos]]
+src = "/images/photo-04.svg"
+alt = "Photo placeholder 04: a group photo"
+shape = "short"
+
+[[photos]]
+src = "/images/photo-05.svg"
+alt = "Photo placeholder 05: research and everyday life"
+shape = "short"
+
+[[photos]]
+src = "/images/photo-06.svg"
+alt = "Photo placeholder 06: a favorite place"
+shape = "tall"
