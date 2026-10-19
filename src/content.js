@@ -37,7 +37,7 @@ export const projects = [
   {
     title: 'Academic homepage',
     description: 'An evolving home for my research, writing, and work. The website you’re exploring right now.',
-    tags: ['Web', 'Open source'],
+    tags: ['Web', 'Source available'],
     image: null,
     imageAlt: '',
     kind: 'website',
