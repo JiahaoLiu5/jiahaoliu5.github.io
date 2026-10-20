@@ -3,7 +3,7 @@ intro = """
 I'm currently working on my Ph.D. in [Information Science](https://infosci.cornell.edu/) at [Cornell University](https://www.cornell.edu/), based in Ithaca, New York. My work spans **human–computer interaction**, **behavioral research**, and **virtual, augmented, and mixed reality**. More about my current research and collaborations will be added here.
 """
 background = "Education, previous research experience, and collaborations — to be added."
-research_label = "research"
+research_label = "leading research projects"
 
 # Theme titles and keywords supplied by Jiahao;
 # images supplied by Jiahao as Research Theme 1.png, 2.png, and 3.png.

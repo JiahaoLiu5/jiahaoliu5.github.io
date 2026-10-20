@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
+const leadingProject = {
+  title: 'Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads',
+  authors: 'Author List: Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi, Meng, Eyal Ofek, Andrea Stevenson Won',
+  venue: "Submitted to ACM CHI '27 | CHI conference on Human Factors in Computing Systems",
+};
 const researchThemes = [
   {
     slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
@@ -46,8 +51,15 @@ test('supplied theme illustrations render and unfinished projects remain placeho
   await page.goto('./');
   await expect(page.getByRole('img',{name:/Illustration of/})).toHaveCount(3);
   await expect(page.getByRole('img',{name:'Portrait placeholder for Jiahao Liu'})).toBeVisible();
-  await expect(page.getByRole('heading',{name:'Research Project 01',exact:true})).toBeVisible();
-  await expect(page.locator('.research-date')).toHaveText(Array(5).fill('Date pending'));
+  await expect(page.getByRole('heading',{name:'leading research projects',exact:true})).toBeVisible();
+  const project = page.locator('.research-list li').first();
+  await expect(project.getByRole('heading')).toHaveText(leadingProject.title);
+  await expect(project.locator('.research-authors')).toHaveText(leadingProject.authors);
+  const author = project.locator('.research-authors').getByText('Jiahao Liu',{exact:true});
+  await expect(author).toHaveCSS('font-weight','700');
+  await expect(author).toHaveCSS('text-decoration-line','underline');
+  await expect(project.locator('.research-venue')).toHaveText(leadingProject.venue);
+  await expect(page.locator('.research-date')).toHaveText(['09 2026', ...Array(4).fill('Date pending')]);
   await expect(page.locator('body')).not.toContainText('Jonathan Segal');
   await expect(page.locator('body')).not.toContainText('Jiale Liu');
   await expect(page.locator('body')).not.toContainText('University of Example');
@@ -98,6 +110,15 @@ test('research links open a real static detail page and preserve project anchors
   await expect(page.locator('#project-03')).toContainText('Research description to be added.');
   await page.reload();
   await expect(page.locator('#project-03')).toBeVisible();
+  await page.goto('./');
+  await page.getByRole('link',{name:leadingProject.title,exact:true}).click();
+  await expect(page).toHaveURL(/\/research\/#project-01$/);
+  const leading = page.locator('#project-01');
+  await expect(leading.getByRole('heading')).toHaveText(leadingProject.title);
+  await expect(leading.locator('.research-authors')).toHaveText(leadingProject.authors);
+  await expect(leading).toContainText('09 2026');
+  await expect(leading).toContainText(leadingProject.venue);
+  await expect(leading.locator('.research-authors').getByText('Jiahao Liu',{exact:true})).toHaveCSS('text-decoration-line','underline');
 });
 
 test('navigation reaches CV, service, and the home research anchor',async({page})=>{

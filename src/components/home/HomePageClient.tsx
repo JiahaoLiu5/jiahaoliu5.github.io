@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { ArrowUpRight } from 'lucide-react';
 import Profile from './Profile';
+import ResearchAuthors from '@/components/research/ResearchAuthors';
 import { assetPath } from '@/lib/paths';
 import type { SiteConfig } from '@/lib/config';
 import type { HomeContent } from '@/types/home';
@@ -51,6 +52,7 @@ export default function HomePageClient({ config, home, research }: {
                   <h3><Link href={`/research/#${item.id}`}>{item.title}</Link></h3>
                   {item.date && <span className="research-date">{item.date}</span>}
                 </div>
+                <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
                 {item.subtitle && <p className="research-venue">{item.subtitle}</p>}
               </li>
             ))}

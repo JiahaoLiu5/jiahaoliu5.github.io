@@ -16,7 +16,7 @@
 
 自我介绍支持 Markdown；链接显示为红色。已有的学校、院系和联系方式来自你提供的信息。教育经历、导师、实验室、论文和时间没有推测填写。
 
-研究列表来自 `content/research.toml` 的 `items`。每条使用稳定的 `id`、真实的 `title`、`subtitle`（发表信息）、`date` 和 `content`。首页标题会跳到 `/research/#id` 对应的详情。当前 5 条均明确占位，没有沿用参考网站的论文成果。
+研究列表来自 `content/research.toml` 的 `items`。每条使用稳定的 `id`、真实的 `title`、`authors`（作者名单原文）、`highlight_author`（需要加粗并加下划线的姓名）、`subtitle`（投稿或发表信息）、`date` 和 `content`。作者行显示在标题与投稿信息之间，首页与研究详情页共用同一份数据。首页标题会跳到 `/research/#id` 对应的详情。第一条已录入你提供的标题、作者、CHI '27 投稿状态和 `09 2026` 日期；项目简介待补充，其余 4 条仍为占位。
 
 社交主页只添加真实 URL。Google Scholar、ORCID 和 LinkedIn 暂时隐藏，提供链接后可加到 `content/config.toml` 的 `social` 下。没有 PDF 时，CV 链接打开网页版本，不生成虚假的下载入口。
 

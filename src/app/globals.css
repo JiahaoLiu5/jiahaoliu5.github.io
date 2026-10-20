@@ -150,6 +150,9 @@ button { cursor: pointer; }
 .research-title-line a { color: inherit; text-decoration: none; }
 .research-title-line a:hover { color: var(--accent); }
 .research-date { font-family: var(--font-mono); font-size: 10px; color: var(--neutral-500); white-space: nowrap; }
+.research-authors { margin: 7px 0 0; font-size: 13px; line-height: 1.6; color: var(--neutral-600); }
+.research-authors strong { font-weight: 700; color: var(--primary); }
+.research-authors u { text-underline-offset: 2px; }
 .research-venue { margin: 3px 0 0; font-size: 12px; color: var(--neutral-500); line-height: 1.5; }
 .site-footer { border-top: 1px solid var(--rule); color: var(--neutral-500); font-size: 12px; }
 .footer-inner { max-width: var(--page-width); margin: 0 auto; padding: 26px 28px; display: flex; justify-content: space-between; gap: 16px; }

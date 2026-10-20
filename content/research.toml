@@ -1,12 +1,14 @@
 type = "card"
 title = "Research"
-description = "Project titles and publication details will be added here."
+description = "Leading research projects. Additional project details will be added here."
 
 [[items]]
 id = "project-01"
-title = "Research Project 01"
-subtitle = "Publication / venue to be added"
-date = "Date pending"
+title = "Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads"
+authors = "Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi, Meng, Eyal Ofek, Andrea Stevenson Won"
+highlight_author = "Jiahao Liu"
+subtitle = "Submitted to ACM CHI '27 | CHI conference on Human Factors in Computing Systems"
+date = "09 2026"
 content = "Research description to be added."
 
 [[items]]
