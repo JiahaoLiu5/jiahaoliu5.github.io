@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
 const researchProjects = [{
   title: 'Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads',
-  authors: 'Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
+  authors: 'Jiahao Liu, Zhalae Daneshvari, Yilu Sun, David Chess, Sarah Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
   venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
   date: '09 2026',
 }, {

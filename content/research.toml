@@ -5,7 +5,7 @@ description = "Leading research projects. Additional project details will be add
 [[items]]
 id = "project-01"
 title = "Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads"
-authors = "Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won"
+authors = "Jiahao Liu, Zhalae Daneshvari, Yilu Sun, David Chess, Sarah Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won"
 highlight_author = "Jiahao Liu"
 subtitle = "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems"
 date = "09 2026"
@@ -41,6 +41,7 @@ content = "Research description to be added."
 [[items]]
 id = "project-05"
 title = '"Social Leading": Exploring Imposed Behavioral Synchrony in Virtual Reality'
+title_keep_together = "in Virtual Reality"
 authors = "Jiahao Liu, Zewuzi Meng, Lydia Lin, Andrea Stevenson Won"
 highlight_author = "Jiahao Liu"
 subtitle = "ACM CSCW '25 | Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing"

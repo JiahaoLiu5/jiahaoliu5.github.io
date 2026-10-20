@@ -46,16 +46,22 @@ export default function HomePageClient({ config, home, research }: {
         <section id="research" className="research-section" aria-labelledby="research-title">
           <h2 id="research-title" className="section-eyebrow">{home.research_label}</h2>
           <ol className="research-list">
-            {research.items.map((item) => (
-              <li key={item.id}>
-                <div className="research-title-line">
-                  <h3><Link href={`/research/#${item.id}`}>{item.title}</Link></h3>
-                  {item.date && <span className="research-date">{item.date}</span>}
-                </div>
-                <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
-                {item.subtitle && <p className="research-venue">{item.subtitle}</p>}
-              </li>
-            ))}
+            {research.items.map((item) => {
+              const titleEnding = item.title_keep_together && item.title.endsWith(item.title_keep_together)
+                ? item.title_keep_together : '';
+              return (
+                <li key={item.id}>
+                  <div className="research-title-line">
+                    <h3><Link href={`/research/#${item.id}`}>
+                      {titleEnding ? <>{item.title.slice(0, -titleEnding.length)}<span className="research-title-phrase">{titleEnding}</span></> : item.title}
+                    </Link></h3>
+                    {item.date && <span className="research-date">{item.date}</span>}
+                  </div>
+                  <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
+                  {item.subtitle && <p className="research-venue">{item.subtitle}</p>}
+                </li>
+              );
+            })}
           </ol>
         </section>
       </div>
