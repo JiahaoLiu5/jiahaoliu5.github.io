@@ -146,7 +146,7 @@ button { cursor: pointer; }
 .research-list { margin: 0; padding: 0; list-style: none; }
 .research-list li { margin: 0 0 18px; }
 .research-title-line { display: flex; align-items: flex-end; align-items: last baseline; gap: 12px; }
-.research-title-line h3 { flex: 1; min-width: 0; margin: 0; font-size: clamp(24px, 2.5vw, 30px); line-height: 1.12; letter-spacing: -.035em; font-weight: 820; color: var(--primary); }
+.research-title-line h3 { flex: 1; min-width: 0; margin: 0; font-size: clamp(24px, 2.5vw, 28px); line-height: 1.12; letter-spacing: -.035em; font-weight: 820; color: var(--primary); }
 .research-title-line a { color: inherit; text-decoration: none; }
 .research-title-line a:hover { color: var(--accent); }
 .research-date { flex-shrink: 0; text-align: right; font-family: var(--font-mono); font-size: 10px; color: var(--neutral-500); white-space: nowrap; }
