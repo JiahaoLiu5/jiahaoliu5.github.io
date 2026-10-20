@@ -10,14 +10,14 @@ research_label = "research"
 [[themes]]
 slug = "immersive-xr"
 title = "Human Interaction Behavior in Immersive XR"
-keywords = ["Avatar Embodiment", "Transformed Social Interaction", "Computer-Mediated Communication", "Social VR"]
+keywords = ["Avatar Embodiment", "Transformed Social Interaction", "Computer-Mediated Communication"]
 src = "/images/theme-immersive-xr-illustration.webp"
 alt = "Illustration of two people in immersive XR interacting with a shared virtual object, with body tracking and behavior charts"
 
 [[themes]]
 slug = "embodied-ai"
 title = "Human Interaction with Embodied AI Agent"
-keywords = ["Embodied AI", "Human-Agent Interaction", "AI-Mediated Communication", "Nonverbal Behavior"]
+keywords = ["Embodied AI", "AI-Mediated Communication", "Human-Agent Interaction", "Nonverbal Behavior"]
 src = "/images/theme-embodied-ai-illustration.webp"
 alt = "Illustration of a person conversing with an embodied AI robot, with dialogue bubbles and data visualizations"
 

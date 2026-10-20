@@ -4,11 +4,11 @@ const themeButton = (page) => page.getByRole('button', { name: 'Change color the
 const researchThemes = [
   {
     slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
-    keywords: 'Avatar Embodiment, Transformed Social Interaction, Computer-Mediated Communication, Social VR',
+    keywords: 'Avatar Embodiment, Transformed Social Interaction, Computer-Mediated Communication',
   },
   {
     slug: 'embodied-ai', title: 'Human Interaction with Embodied AI Agent',
-    keywords: 'Embodied AI, Human-Agent Interaction, AI-Mediated Communication, Nonverbal Behavior',
+    keywords: 'Embodied AI, AI-Mediated Communication, Human-Agent Interaction, Nonverbal Behavior',
   },
   {
     slug: 'applied-xr', title: 'Real-World Application of XR Technology',
