@@ -10,7 +10,7 @@ const researchProjects = [{
   title: 'Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality',
   authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won',
   highlight: 'Jiahao Liu*',
-  venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
+  venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems （* Equal Contribution）",
   date: '09 2026',
 }, {
   title: 'Extended Applications of Augmented Social Influence Through Imposed Synchrony',
@@ -26,7 +26,7 @@ const researchProjects = [{
   title: '"Social Leading": Exploring Imposed Behavioral Synchrony in Virtual Reality',
   authors: 'Jiahao Liu, Zewuzi Meng, Lydia Lin, Andrea Stevenson Won',
   venue: "ACM CSCW '25 | Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing",
-  date: 'Date pending',
+  date: '10 2025',
 }];
 const leadingProject = researchProjects[0];
 const researchThemes = [
