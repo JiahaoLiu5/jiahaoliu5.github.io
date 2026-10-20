@@ -1,11 +1,34 @@
 import { test, expect } from '@playwright/test';
 
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
-const leadingProject = {
+const researchProjects = [{
   title: 'Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads',
-  authors: 'Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi, Meng, Eyal Ofek, Andrea Stevenson Won',
+  authors: 'Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
   venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
-};
+  date: '09 2026',
+}, {
+  title: 'Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality',
+  authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won',
+  highlight: 'Jiahao Liu*',
+  venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
+  date: '09 2026',
+}, {
+  title: 'Extended Applications of Augmented Social Influence Through Imposed Synchrony',
+  authors: 'Jiahao Liu, Yilu Sun, Tianqi Liu, Wei-Che Harry Lin, Andrea Stevenson Won',
+  venue: "ACM CHI '26 Workshop | Shaping Future Human Connections: Social Augmentation through XR Technologies",
+  date: '04 2026',
+}, {
+  title: 'InfoFuse: A Post-Process Video-Mocap Information Fusion Approach for Human-Centered Interaction Research',
+  authors: 'Jiahao Liu, Jia Guo, Sushrut Sudarshan Surve, Jovan Menezes, Daniele Fragiacomo, Kevin Thomas Martinez, Kwame Agyemang Baffour, Silvia Ferrari, Aleshia Hayes, Oyewole Oyekoya, Andrea Stevenson Won',
+  venue: "ACM SIGGRAPH VRCAI '25 | Proceedings of the 20th International Conference on Virtual Reality Continuum and its Applications in Industry",
+  date: '12 2025',
+}, {
+  title: '"Social Leading": Exploring Imposed Behavioral Synchrony in Virtual Reality',
+  authors: 'Jiahao Liu, Zewuzi Meng, Lydia Lin, Andrea Stevenson Won',
+  venue: "ACM CSCW '25 | Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing",
+  date: 'Date pending',
+}];
+const leadingProject = researchProjects[0];
 const researchThemes = [
   {
     slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
@@ -47,19 +70,21 @@ test('PRISM homepage renders the profile, research themes, and research list wit
   expect(bad).toEqual([]);
 });
 
-test('supplied theme illustrations render and unfinished projects remain placeholders', async ({page})=>{
+test('supplied research records and author emphasis render correctly', async ({page})=>{
   await page.goto('./');
   await expect(page.getByRole('img',{name:/Illustration of/})).toHaveCount(3);
   await expect(page.getByRole('img',{name:'Portrait placeholder for Jiahao Liu'})).toBeVisible();
   await expect(page.getByRole('heading',{name:'leading research projects',exact:true})).toBeVisible();
-  const project = page.locator('.research-list li').first();
-  await expect(project.getByRole('heading')).toHaveText(leadingProject.title);
-  await expect(project.locator('.research-authors')).toHaveText(leadingProject.authors);
-  const author = project.locator('.research-authors').getByText('Jiahao Liu',{exact:true});
-  await expect(author).toHaveCSS('font-weight','700');
-  await expect(author).toHaveCSS('text-decoration-line','underline');
-  await expect(project.locator('.research-venue')).toHaveText(leadingProject.venue);
-  await expect(page.locator('.research-date')).toHaveText(['09 2026', ...Array(4).fill('Date pending')]);
+  for (const [index, record] of researchProjects.entries()) {
+    const project = page.locator('.research-list li').nth(index);
+    await expect(project.getByRole('heading')).toHaveText(record.title);
+    await expect(project.locator('.research-authors')).toHaveText(record.authors);
+    const author = project.locator('.research-authors').getByText(record.highlight || 'Jiahao Liu',{exact:true});
+    await expect(author).toHaveCSS('font-weight','700');
+    await expect(author).toHaveCSS('text-decoration-line','underline');
+    await expect(project.locator('.research-venue')).toHaveText(record.venue);
+    await expect(project.locator('.research-date')).toHaveText(record.date);
+  }
   await expect(page.locator('body')).not.toContainText('Jonathan Segal');
   await expect(page.locator('body')).not.toContainText('Jiale Liu');
   await expect(page.locator('body')).not.toContainText('University of Example');
@@ -104,7 +129,7 @@ test('whole theme cards respond to hover and open distinct reloadable pages', as
 
 test('research links open a real static detail page and preserve project anchors',async({page})=>{
   await page.goto('./');
-  await page.getByRole('link',{name:'Research Project 03',exact:true}).click();
+  await page.getByRole('link',{name:researchProjects[2].title,exact:true}).click();
   await expect(page).toHaveURL(/\/research\/#project-03$/);
   await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
   await expect(page.locator('#project-03')).toContainText('Research description to be added.');

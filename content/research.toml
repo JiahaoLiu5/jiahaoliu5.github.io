@@ -5,7 +5,7 @@ description = "Leading research projects. Additional project details will be add
 [[items]]
 id = "project-01"
 title = "Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads"
-authors = "Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi, Meng, Eyal Ofek, Andrea Stevenson Won"
+authors = "Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won"
 highlight_author = "Jiahao Liu"
 subtitle = "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems"
 date = "09 2026"
@@ -13,28 +13,36 @@ content = "Research description to be added."
 
 [[items]]
 id = "project-02"
-title = "Research Project 02"
-subtitle = "Publication / venue to be added"
-date = "Date pending"
+title = "Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality"
+authors = "Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won"
+highlight_author = "Jiahao Liu*"
+subtitle = "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems"
+date = "09 2026"
 content = "Research description to be added."
 
 [[items]]
 id = "project-03"
-title = "Research Project 03"
-subtitle = "Publication / venue to be added"
-date = "Date pending"
+title = "Extended Applications of Augmented Social Influence Through Imposed Synchrony"
+authors = "Jiahao Liu, Yilu Sun, Tianqi Liu, Wei-Che Harry Lin, Andrea Stevenson Won"
+highlight_author = "Jiahao Liu"
+subtitle = "ACM CHI '26 Workshop | Shaping Future Human Connections: Social Augmentation through XR Technologies"
+date = "04 2026"
 content = "Research description to be added."
 
 [[items]]
 id = "project-04"
-title = "Research Project 04"
-subtitle = "Publication / venue to be added"
-date = "Date pending"
+title = "InfoFuse: A Post-Process Video-Mocap Information Fusion Approach for Human-Centered Interaction Research"
+authors = "Jiahao Liu, Jia Guo, Sushrut Sudarshan Surve, Jovan Menezes, Daniele Fragiacomo, Kevin Thomas Martinez, Kwame Agyemang Baffour, Silvia Ferrari, Aleshia Hayes, Oyewole Oyekoya, Andrea Stevenson Won"
+highlight_author = "Jiahao Liu"
+subtitle = "ACM SIGGRAPH VRCAI '25 | Proceedings of the 20th International Conference on Virtual Reality Continuum and its Applications in Industry"
+date = "12 2025"
 content = "Research description to be added."
 
 [[items]]
 id = "project-05"
-title = "Research Project 05"
-subtitle = "Publication / venue to be added"
+title = '"Social Leading": Exploring Imposed Behavioral Synchrony in Virtual Reality'
+authors = "Jiahao Liu, Zewuzi Meng, Lydia Lin, Andrea Stevenson Won"
+highlight_author = "Jiahao Liu"
+subtitle = "ACM CSCW '25 | Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing"
 date = "Date pending"
 content = "Research description to be added."
