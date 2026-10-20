@@ -120,11 +120,21 @@ button { cursor: pointer; }
 .intro-copy a, .background-copy a { color: var(--accent); text-decoration: none; }
 .intro-copy a:hover, .background-copy a:hover { text-decoration: underline; }
 .research-themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 32px 0 36px; }
-.research-theme { min-width: 0; display: grid; grid-template-rows: auto 1fr auto; }
+.research-theme { min-width: 0; display: grid; }
+.theme-link { display: grid; grid-template-rows: auto auto 1fr auto; color: inherit; text-decoration: none; cursor: pointer; border-radius: 4px; }
+.theme-link:hover .theme-title, .theme-link:focus-visible .theme-title { color: var(--accent); }
+.theme-read-more { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; color: var(--primary); font-size: 13px; }
+.theme-read-more svg, .theme-detail-back svg { width: 15px; height: 15px; stroke-width: 1.6; }
+.theme-link:hover .theme-read-more, .theme-link:focus-visible .theme-read-more { color: var(--accent); }
 .theme-image { position: relative; aspect-ratio: 1; margin: 0 0 17px; border-radius: 4px; overflow: hidden; background: var(--neutral-100); }
 .theme-image img { object-fit: cover; }
 .theme-title { margin: 0; font-size: 22px; line-height: 1.16; letter-spacing: -.035em; font-weight: 820; color: var(--primary); text-wrap: balance; }
 .theme-keywords { margin: 9px 0 0; font-size: 14px; line-height: 1.55; font-weight: 400; color: var(--neutral-500); }
+.theme-detail { max-width: 848px; margin: 0 auto; padding: 54px 28px 72px; }
+.theme-detail-back { display: inline-flex; align-items: center; gap: 7px; color: var(--primary); text-decoration: none; font-size: 13px; }
+.theme-detail-back:hover { color: var(--accent); }
+.theme-detail h1 { margin: 24px 0 20px; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -.035em; font-weight: 820; color: var(--primary); }
+.theme-detail-pending { margin: 28px 0 0; color: var(--neutral-600); }
 /* Stack by the actual content width, including when the profile rail is present. */
 @container home (max-width: 700px) {
   .research-themes { grid-template-columns: 1fr; gap: 32px; }

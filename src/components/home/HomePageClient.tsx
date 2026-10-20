@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
+import { ArrowUpRight } from 'lucide-react';
 import Profile from './Profile';
 import { assetPath } from '@/lib/paths';
 import type { SiteConfig } from '@/lib/config';
@@ -22,16 +23,20 @@ export default function HomePageClient({ config, home, research }: {
         <section id="about" className="intro-section" aria-labelledby="intro-title">
           <h1 id="intro-title">{home.greeting}</h1>
           <div className="intro-copy"><ReactMarkdown>{home.intro}</ReactMarkdown></div>
-          <section className="research-themes" aria-label="Research themes">
+          <section id="research-themes" className="research-themes" aria-label="Research themes">
             {home.themes.map((theme) => (
-              <article className="research-theme" key={theme.title}>
-                <figure className="theme-image">
-                  <Image src={assetPath(theme.src)} alt={theme.alt} fill
-                    sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1000px) calc(100vw - 300px), (max-width: 1068px) calc(100vw - 368px), 270px"
-                    priority />
-                </figure>
-                <h2 className="theme-title">{theme.title}</h2>
-                <p className="theme-keywords">{theme.keywords.join(', ')}</p>
+              <article className="research-theme" key={theme.slug}>
+                <Link className="theme-link" href={`/research/${theme.slug}/`}
+                  aria-labelledby={`theme-${theme.slug}-title`}>
+                  <figure className="theme-image">
+                    <Image src={assetPath(theme.src)} alt={theme.alt} fill
+                      sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1000px) calc(100vw - 300px), (max-width: 1068px) calc(100vw - 368px), 270px"
+                      priority />
+                  </figure>
+                  <h2 id={`theme-${theme.slug}-title`} className="theme-title">{theme.title}</h2>
+                  <p className="theme-keywords">Keywords: {theme.keywords.join(', ')}</p>
+                  <span className="theme-read-more">Read More <ArrowUpRight aria-hidden="true" /></span>
+                </Link>
               </article>
             ))}
           </section>

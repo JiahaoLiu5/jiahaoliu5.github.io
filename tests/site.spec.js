@@ -1,6 +1,20 @@
 import { test, expect } from '@playwright/test';
 
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
+const researchThemes = [
+  {
+    slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
+    keywords: 'Avatar Embodiment, Transformed Social Interaction, Computer-Mediated Communication, Social VR',
+  },
+  {
+    slug: 'embodied-ai', title: 'Human Interaction with Embodied AI Agent',
+    keywords: 'Embodied AI, Human-Agent Interaction, AI-Mediated Communication, Nonverbal Behavior',
+  },
+  {
+    slug: 'applied-xr', title: 'Real-World Application of XR Technology',
+    keywords: 'Applied XR, Real-World Contexts, Human-Centered Design, Teamwork',
+  },
+];
 
 test('PRISM homepage renders the profile, research themes, and research list without failures', async ({ page }) => {
   const errors=[];
@@ -39,6 +53,41 @@ test('supplied theme illustrations render and unfinished projects remain placeho
   await expect(page.locator('body')).not.toContainText('University of Example');
   await expect(page.locator('a[href="#"]')).toHaveCount(0);
   await expect(page.getByRole('link',{name:'PRISM',exact:true})).toHaveAttribute('href','https://github.com/xyjoey/PRISM');
+});
+
+test('whole theme cards respond to hover and open distinct reloadable pages', async ({page}) => {
+  await page.emulateMedia({colorScheme:'light'});
+  await page.goto('./');
+  const homeURL = test.info().project.use.baseURL;
+  for (const [index, theme] of researchThemes.entries()) {
+    await page.mouse.move(0, 0);
+    const link = page.getByRole('region',{name:'Research themes'}).getByRole('link',{name:theme.title,exact:true});
+    const title = link.getByRole('heading');
+    await expect(link.locator('.theme-keywords')).toHaveText(`Keywords: ${theme.keywords}`);
+    await expect(link.locator('.theme-read-more')).toHaveText('Read More');
+    await expect(title).toHaveCSS('color','rgb(17, 17, 17)');
+    for (const selector of ['.theme-image', '.theme-title', '.theme-keywords', '.theme-read-more']) {
+      const part = link.locator(selector);
+      await part.hover();
+      await expect(part).toHaveCSS('cursor','pointer');
+      await expect(title).toHaveCSS('color','rgb(217, 35, 43)');
+    }
+    const destination = new URL(`research/${theme.slug}/`, homeURL);
+    await expect(link).toHaveAttribute('href',destination.pathname);
+    await link.locator(['.theme-image', '.theme-keywords', '.theme-read-more'][index]).click();
+    await expect(page).toHaveURL(destination.href);
+    await expect(page.getByRole('heading',{level:1})).toHaveText(theme.title);
+    await expect(page.locator('main .theme-keywords')).toHaveText(`Keywords: ${theme.keywords}`);
+    const response = await page.reload();
+    expect(response.ok()).toBe(true);
+    await expect(page.getByRole('heading',{level:1})).toHaveText(theme.title);
+    await page.getByRole('link',{name:'Back to research themes'}).click();
+    await expect(page).toHaveURL(new URL('./#research-themes',homeURL).href);
+    await expect(page.getByRole('region',{name:'Research themes'})).toBeVisible();
+  }
+  await page.getByRole('link',{name:researchThemes[0].title,exact:true}).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('heading',{level:1})).toHaveText(researchThemes[0].title);
 });
 
 test('research links open a real static detail page and preserve project anchors',async({page})=>{
@@ -113,6 +162,8 @@ test('static HTML is readable without JavaScript and keyboard skip link works',a
   await nojs.goto(new URL('./',test.info().project.use.baseURL).href);
   await expect(nojs.getByRole('heading',{level:1})).toBeVisible();
   await expect(nojs.locator('.research-list li')).toHaveCount(5);
+  await nojs.getByRole('link',{name:researchThemes[0].title,exact:true}).click();
+  await expect(nojs.getByRole('heading',{level:1})).toHaveText(researchThemes[0].title);
   await context.close();
   await page.goto('./');
   await page.keyboard.press('Tab');

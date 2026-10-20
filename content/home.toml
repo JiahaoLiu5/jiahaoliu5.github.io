@@ -5,22 +5,25 @@ I'm currently working on my Ph.D. in [Information Science](https://infosci.corne
 background = "Education, previous research experience, and collaborations — to be added."
 research_label = "research"
 
-# Theme titles supplied by Jiahao. Keywords are initial suggestions;
+# Theme titles and keywords supplied by Jiahao;
 # images supplied by Jiahao as Research Theme 1.png, 2.png, and 3.png.
 [[themes]]
+slug = "immersive-xr"
 title = "Human Interaction Behavior in Immersive XR"
-keywords = ["Immersive interaction", "Human behavior", "User experience"]
+keywords = ["Avatar Embodiment", "Transformed Social Interaction", "Computer-Mediated Communication", "Social VR"]
 src = "/images/theme-immersive-xr-illustration.webp"
 alt = "Illustration of two people in immersive XR interacting with a shared virtual object, with body tracking and behavior charts"
 
 [[themes]]
+slug = "embodied-ai"
 title = "Human Interaction with Embodied AI Agent"
-keywords = ["Embodied AI", "Human–agent interaction", "Social presence"]
+keywords = ["Embodied AI", "Human-Agent Interaction", "AI-Mediated Communication", "Nonverbal Behavior"]
 src = "/images/theme-embodied-ai-illustration.webp"
 alt = "Illustration of a person conversing with an embodied AI robot, with dialogue bubbles and data visualizations"
 
 [[themes]]
+slug = "applied-xr"
 title = "Real-World Application of XR Technology"
-keywords = ["Applied XR", "Real-world contexts", "Human-centered design"]
+keywords = ["Applied XR", "Real-World Contexts", "Human-Centered Design", "Teamwork"]
 src = "/images/theme-applied-xr-illustration.webp"
 alt = "Illustration of a person using XR to inspect industrial equipment with augmented reality overlays"
