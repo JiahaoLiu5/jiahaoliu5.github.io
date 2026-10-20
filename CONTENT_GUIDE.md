@@ -16,7 +16,7 @@
 
 自我介绍支持 Markdown；链接显示为红色。已有的学校、院系和联系方式来自你提供的信息。教育经历、导师、实验室、论文和时间没有推测填写。
 
-研究列表来自 `content/research.toml` 的 `items`。每条使用稳定的 `id`、真实的 `title`、`authors`（作者名单原文）、`highlight_author`（需要加粗并加下划线的姓名）、`subtitle`（投稿或发表信息）、`date` 和 `content`。作者行显示在标题与投稿信息之间，首页与研究详情页共用同一份数据。首页标题会跳到 `/research/#id` 对应的详情。五项的标题、作者和投稿/会议信息均已按你提供的资料录入，项目简介待补充。第二项的 Kevin T. Martinez 和 Jiahao Liu 后均标注 `*`，`highlight_author = "Jiahao Liu*"` 使你的星号也包含在加粗下划线中；投稿信息后按你提供的说明标注 `（* Equal Contribution）`。五项日期均已提供，第五项为 `10 2025`。首页每个研究项目左侧使用 4px 竖线，与文字间隔 16px；竖线使用正文颜色，浅色模式为黑色，深色模式为浅色。整个项目块在鼠标悬停或内部链接获得键盘焦点时显示浅灰背景。首页研究标题沿用响应式字号，范围为 24–27px；第五项的 `title_keep_together = "in Virtual Reality"` 让标题末尾短语整体换行，在桌面从第二行开始，同时适应手机宽度。
+研究列表来自 `content/research.toml` 的 `items`。每条使用稳定的 `id`、真实的 `title`、`authors`（作者名单原文）、`highlight_author`（需要加粗并加下划线的姓名）、`subtitle`（投稿或发表信息）、`date` 和 `content`。作者行显示在标题与投稿信息之间，首页与研究详情页共用同一份数据。首页标题会跳到 `/research/#id` 对应的详情。五项的标题、作者和投稿/会议信息均已按你提供的资料录入，项目简介待补充。第二项的 Kevin T. Martinez 和 Jiahao Liu 后均标注 `*`，`highlight_author = "Jiahao Liu*"` 使你的星号也包含在加粗下划线中；投稿信息后按你提供的说明标注 `（* Equal Contribution）`。五项日期均已提供，第五项为 `10 2025`。首页每个研究项目左侧使用 4px 竖线，与文字间隔 16px；竖线使用正文颜色，浅色模式为黑色，深色模式为浅色。整个项目块在鼠标悬停或内部链接获得键盘焦点时使用更浅的 `neutral-50` 背景（浅色模式为 `#fafafa`），日期右侧留出 8px 间距。首页研究标题沿用响应式字号，范围为 24–27px；第五项的 `title_keep_together = "in Virtual Reality"` 让标题末尾短语整体换行，在桌面从第二行开始，同时适应手机宽度。
 
 社交主页只添加真实 URL。Google Scholar、ORCID 和 LinkedIn 暂时隐藏，提供链接后可加到 `content/config.toml` 的 `social` 下。没有 PDF 时，CV 链接打开网页版本，不生成虚假的下载入口。
 
