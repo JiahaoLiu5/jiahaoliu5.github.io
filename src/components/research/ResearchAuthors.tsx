@@ -8,7 +8,7 @@ export default function ResearchAuthors({ authors, highlightAuthor }: {
 
   return (
     <p className="research-authors">
-      Author List: {index < 0 ? authors : <>
+      {index < 0 ? authors : <>
         {authors.slice(0, index)}
         <strong><u>{name}</u></strong>
         {authors.slice(index + name.length)}
