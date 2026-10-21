@@ -14,7 +14,7 @@
 
 首页的 `themes` 数组包含三个研究主题，按展示顺序填写 `slug`、`title`、`keywords`、`src` 和图片描述 `alt`。标题、关键词和三张主题插画均由你提供。整个主题板块是一个链接，鼠标移入或键盘聚焦时标题变红，底部显示 `Read More ↗`；三个主题卡片目前统一指向完整研究页 `/research/`。原来的三个 `/research/{slug}/` 子页面仍保留，使用同一份主题数据；后续布局入口在 `src/app/research/[theme]/page.tsx`。插画按 `Research Theme 1.png`、`2.png`、`3.png` 的顺序对应三个主题，使用无损 WebP 格式发布。之后换图时替换 `src`，同时更新 `alt`。图片框在桌面和手机上均为正方形，以完整显示插画。桌面端三列之间留有间隔；主要内容区域宽度不超过 700px 时，改为纵向排列，避免有侧边栏的平板布局挤压标题。头像路径在 `content/config.toml` 的 `author.avatar`。供图后也请更新头像的替代文字。
 
-问候语来自 `greeting` 和 `greeting_zh`，英文默认显示；鼠标悬停或键盘聚焦标题时，英文上滑、中文从下方进入，移开或失焦后恢复英文。两种语言共用标题占位，避免页面跳动。
+问候语来自 `greeting` 和 `greeting_zh`，英文默认显示；鼠标悬停或键盘聚焦标题时，英文上滑、中文从下方进入，移开或失焦后恢复英文。两种语言共用标题占位，避免页面跳动。滑动时长为 480ms，透明度过渡为 320ms。
 
 自我介绍 `intro` 支持 Markdown，空行分段；链接显示为红色，`**文字**` 显示为加粗。三段介绍、博士导师、委员会成员、本科学校及暑期研究经历均按你提供的文字填写；首页介绍采用两端对齐，开头按后续要求删去 `currently` 并衔接为 `Cornell University, where I conduct…`。第二段仅将指定的五个短语加粗，不添加链接。原有的教育与合作经历待补充说明已删除；可选的 `background` 未填写时不渲染占位区域。外部链接的选择与公开来源记录在 `DESIGN_REFERENCES.md`。
 
@@ -28,4 +28,4 @@
 
 购买域名后，配置 GitHub Pages Custom domain 与注册商 DNS，将 `content/config.toml` 的 `site.url` 改为新域名，再发布即可。未购买域名前不写入 CNAME。
 
-页面入场沿用 PRISM 的淡入与 20px 上浮效果，Home、Research、CV、Service 及方向详情页均从上至下依次显示。`src/app/template.tsx` 在切页时重新挂载内容，使入场效果再次播放；动画样式在 `src/app/globals.css`。桌面导航使用暖红色 `accent-light` 气泡，跟随悬停或键盘焦点弹性滑动，并回到当前页面；手机导航使用同色圆角背景。开启系统“减少动态效果”后，入场和导航滑动动画会关闭，问候语直接切换。
+页面入场沿用 PRISM 的淡入与 20px 上浮效果，Home、Research、CV、Other 及方向详情页均从上至下依次显示。`src/app/template.tsx` 在切页时重新挂载内容，使入场效果再次播放；动画样式在 `src/app/globals.css`。桌面导航使用独立的浅暖红色 `nav-bubble` 气泡（浅色模式为 `#fff7f5`），选中和悬停文字为接近黑色的深灰色，跟随悬停或键盘焦点弹性滑动，并回到当前页面；手机导航使用同色圆角背景。导航中的 Other 对应原 Service 内容，地址为 `/service/`。开启系统“减少动态效果”后，入场和导航滑动动画会关闭，问候语直接切换。

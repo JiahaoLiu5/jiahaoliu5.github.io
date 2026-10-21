@@ -159,7 +159,7 @@ test('navigation reaches CV, service, and the full research page',async({page})=
   await nav.getByRole('link',{name:'CV',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toHaveText('Curriculum Vitae');
   await expect(page.getByText('Ph.D. Student, Information Science',{exact:true})).toBeVisible();
-  await nav.getByRole('link',{name:'Service',exact:true}).click();
+  await nav.getByRole('link',{name:'Other',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toHaveText('Academic Service');
   await nav.getByRole('link',{name:'Research',exact:true}).click();
   await expect(page).toHaveURL(/\/research\/$/);
@@ -197,7 +197,8 @@ test('warm navigation bubble follows hover and focus and returns to the current 
   const home=nav.getByRole('link',{name:'Home',exact:true});
   const research=nav.getByRole('link',{name:'Research',exact:true});
   const cv=nav.getByRole('link',{name:'CV',exact:true});
-  await expect(home.locator('.navigation-bubble')).toHaveCSS('background-color','rgb(255, 241, 241)');
+  await expect(home.locator('.navigation-bubble')).toHaveCSS('background-color','rgb(255, 247, 245)');
+  await expect(home).toHaveCSS('color','rgb(51, 51, 51)');
   await research.hover();
   await expect(research.locator('.navigation-bubble')).toBeVisible();
   await expect(home).toHaveAttribute('aria-current','page');
