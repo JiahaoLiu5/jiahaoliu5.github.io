@@ -19,3 +19,24 @@ Jiahao uploaded `Research Theme 3 pictures.zip`, containing `Research Theme 1.pn
 ## Portrait placeholder
 
 The generic portrait placeholder is retained from AcademicPages under its MIT license, included at `public/licenses/academicpages-MIT.txt`. It is not a photograph of Jiahao. The prior website is preserved separately as described in `ARCHIVE.md`.
+
+## Introduction links
+
+Jiahao supplied the three introduction paragraphs, the five phrases to emphasize in the second paragraph, and the ten names to link. Biography wording is preserved. The former education/collaboration placeholder is removed. Paragraph spacing is 20px and emphasis uses weight 700.
+
+The links favor institutional pages, faculty homepages, and lab homepages:
+
+| Text | Destination |
+| --- | --- |
+| Bowers School of Computing and Information Science | https://bowers.cornell.edu/ |
+| Cornell University | https://www.cornell.edu/ |
+| Virtual Embodiment Lab | https://virtualembodimentlab.com/ |
+| Prof. Andrea Stevenson Won | https://cals.cornell.edu/andrea-stevenson-won |
+| Prof. Eyal Ofek | https://www.microsoft.com/en-us/research/people/eyalofek/ |
+| Prof. Susan Fussell | https://sfussell.hci.cornell.edu/ |
+| Prof. Sang-won Leigh | https://www.sangww.net/ |
+| Xi'an Jiaotong University | https://en.xjtu.edu.cn/ |
+| APEX Lab | https://apex-hci.com/ |
+| J2 Lab | https://jingjieyeo.github.io/ |
+
+Direct website requests returned proxy-level 403 responses in this environment, including after network access was enabled. Link selection was cross-checked through accessible public academic website sources: the [Virtual Embodiment Lab profile](https://github.com/virtual-embodiment-lab), [Jingjie Yeo's official lab website source](https://github.com/jingjieyeo/jingjieyeo.github.io), [an APEX member's homepage](https://github.com/Vector3q/Vector3q.github.io/blob/main/index.html), [a former Andrea Won student's homepage](https://github.com/kexinz21/kexinz21.github.io), [Ryo Suzuki's advisor links](https://github.com/ryosuzuki/homepage/blob/master/content/experience.yaml), [Tao Long's Cornell biography](https://github.com/iamtaolong/iamtaolong.github.io), and [Max Lever's Sang-won Leigh workshop credit](https://github.com/maxlever/maxlever.me/blob/gh-pages/_posts/2019-01-01-artmatr.html). External destinations were not live HTTP-validated.

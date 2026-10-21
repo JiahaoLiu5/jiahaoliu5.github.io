@@ -1,8 +1,11 @@
 greeting = "Hi, I'm Jiahao Liu"
 intro = """
-I'm currently working on my Ph.D. in [Information Science](https://infosci.cornell.edu/) at [Cornell University](https://www.cornell.edu/), based in Ithaca, New York. My work spans **human–computer interaction**, **behavioral research**, and **virtual, augmented, and mixed reality**. More about my current research and collaborations will be added here.
+I am currently a Ph.D. student in the [Bowers School of Computing and Information Science](https://bowers.cornell.edu/) at [Cornell University](https://www.cornell.edu/). I conduct my doctoral research in the [Virtual Embodiment Lab](https://virtualembodimentlab.com/), advised by [Prof. Andrea Stevenson Won](https://cals.cornell.edu/andrea-stevenson-won). I also work closely with [Prof. Eyal Ofek](https://www.microsoft.com/en-us/research/people/eyalofek/), and I am fortunate to have [Prof. Susan Fussell](https://sfussell.hci.cornell.edu/) and [Prof. Sang-won Leigh](https://www.sangww.net/) on my research committee. Before starting my PhD, I received my bachelor's degree from [Xi'an Jiaotong University](https://en.xjtu.edu.cn/). I am lucky to have summer research experience at [APEX Lab](https://apex-hci.com/), HKUST, with Prof. Mingming Fan, and [J2 Lab](https://jingjieyeo.github.io/), Cornell, with Prof. Jingjie Yeo.
+
+My research lies at the intersection of **Human-Computer Interaction** (HCI), **Virtual and Mixed Reality** (VR/MR), and **digitally mediated communication**. I design and build immersive **XR+AI systems**, and evaluate them with real-world users to study **human behavior**. In particular, my research explores transformed embodied experience in human-human interaction, interaction mechanism between human and embodied AI agent, and real-world application of XR technologies that support teamwork, training, and health.
+
+Below are my three main research areas and a list of my recent research projects.
 """
-background = "Education, previous research experience, and collaborations — to be added."
 research_label = "leading research projects"
 
 # Theme titles and keywords supplied by Jiahao;

@@ -116,7 +116,8 @@ button { cursor: pointer; }
 .intro-section h1 { font-size: 28px; letter-spacing: -.035em; line-height: 1.2; font-weight: 750; margin: 0 0 30px; color: var(--primary); }
 .intro-copy, .background-copy { font-size: 17px; line-height: 1.6; }
 .intro-copy p, .background-copy p { margin: 0; }
-.intro-copy strong { font-weight: 500; }
+.intro-copy p + p { margin-top: 20px; }
+.intro-copy strong { font-weight: 700; }
 .intro-copy a, .background-copy a { color: var(--accent); text-decoration: none; }
 .intro-copy a:hover, .background-copy a:hover { text-decoration: underline; }
 .research-themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 32px 0 36px; }

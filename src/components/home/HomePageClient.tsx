@@ -41,7 +41,7 @@ export default function HomePageClient({ config, home, research }: {
               </article>
             ))}
           </section>
-          <div className="background-copy"><ReactMarkdown>{home.background}</ReactMarkdown></div>
+          {home.background && <div className="background-copy"><ReactMarkdown>{home.background}</ReactMarkdown></div>}
         </section>
         <section id="research" className="research-section" aria-labelledby="research-title">
           <h2 id="research-title" className="section-eyebrow">{home.research_label}</h2>
