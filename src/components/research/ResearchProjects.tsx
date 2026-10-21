@@ -80,7 +80,7 @@ export default function ResearchProjects({ config }: { config: CardPageConfig })
   const visibleProjects = useMemo(() => {
     const terms = searchable(query).trim().split(/\s+/).filter(Boolean);
     return projects.filter(item => {
-      const text = searchable([item.title, item.authors, item.subtitle, item.date, item.abstract].filter(Boolean).join(' '));
+      const text = searchable([item.title, item.authors, item.author_note, item.subtitle, item.date, item.abstract].filter(Boolean).join(' '));
       const matchesSearch = terms.every(term => text.includes(term));
       const matchesFilter = selectedFilter === 'all'
         || (selectedFilter === 'first-author' && (item.authorship === 'first' || item.authorship === 'co-first'))

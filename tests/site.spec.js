@@ -184,6 +184,9 @@ test('research search and project filters work together and recover from empty r
   await page.getByRole('button',{name:'First-Author Projects',exact:true}).click();
   await expect(projects).toHaveCount(7);
   await expect(page.locator('#project-02')).toBeVisible();
+  await search.fill('Equal Contribution');
+  await expect(projects).toHaveCount(1);
+  await expect(projects.first()).toHaveAttribute('id','project-02');
   await search.fill('Kevin');
   await expect(projects).toHaveCount(2);
   await page.getByRole('button',{name:'Published Projects',exact:true}).click();
