@@ -2,8 +2,6 @@
 
 Live site: <https://jiahaoliu5.github.io/>
 
-Built from [PRISM](https://github.com/xyjoey/PRISM), with a homepage adapted to the supplied Jonathan Segal screenshot: black text, red links, a three-column photo wall, and a compact research list. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md). The earlier website is safely preserved in the [archive branch](https://github.com/JiahaoLiu5/jiahaoliu5.github.io/tree/archive/academicpages-6aa7332); recovery details are in [ARCHIVE.md](ARCHIVE.md).
-
 ## Development
 
 Node.js 24 is available in the cloud environment.
@@ -31,3 +29,4 @@ Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md). User-supplied facts are retained; pho
 Push source to `main`. `.github/workflows/deploy.yml` builds `out/`, tests the static artifact, deploys GitHub Pages, then verifies the public site in Chrome. Pages must remain configured with Source: GitHub Actions. The build reads `BASE_PATH` from Pages and prefixes static assets/links for a subpath when needed. The historical repository mount remains `/workspace/personal-website`.
 
 For a future purchased domain, set Pages Custom domain and registrar DNS, update `site.url` in `content/config.toml`, then redeploy. A root domain uses an empty base path. No unpurchased domain is configured.
+
