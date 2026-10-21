@@ -115,6 +115,7 @@ button { cursor: pointer; }
 .home-content { min-width: 0; container: home / inline-size; }
 .intro-section h1 { font-size: 28px; letter-spacing: -.035em; line-height: 1.2; font-weight: 750; margin: 0 0 30px; color: var(--primary); }
 .intro-copy, .background-copy { font-size: 17px; line-height: 1.6; }
+.intro-copy { text-align: justify; }
 .intro-copy p, .background-copy p { margin: 0; }
 .intro-copy p + p { margin-top: 20px; }
 .intro-copy strong { font-weight: 700; }
@@ -125,7 +126,7 @@ button { cursor: pointer; }
 .theme-link { display: grid; grid-template-rows: auto auto 1fr auto; color: inherit; text-decoration: none; cursor: pointer; border-radius: 4px; }
 .theme-link:hover .theme-title, .theme-link:focus-visible .theme-title { color: var(--accent); }
 .theme-read-more { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; color: var(--primary); font-size: 13px; }
-.theme-read-more svg, .theme-detail-back svg { width: 15px; height: 15px; stroke-width: 1.6; }
+.theme-read-more svg, .theme-detail-back svg, .research-view-more svg { width: 15px; height: 15px; stroke-width: 1.6; }
 .theme-link:hover .theme-read-more, .theme-link:focus-visible .theme-read-more { color: var(--accent); }
 .theme-image { position: relative; aspect-ratio: 1; margin: 0 0 17px; border-radius: 4px; overflow: hidden; background: var(--neutral-100); }
 .theme-image img { object-fit: cover; }
@@ -144,6 +145,14 @@ button { cursor: pointer; }
 }
 .background-copy { margin: 30px 0 22px; }
 .research-section { border-top: 1px solid var(--rule); padding-top: 20px; scroll-margin-top: 96px; }
+.research-section-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.research-section-header .section-eyebrow { margin: 0; }
+.research-view-more { display: inline-flex; align-items: center; gap: 7px; color: var(--primary); font-size: 13px; text-decoration: none; white-space: nowrap; }
+.research-view-more:hover { color: var(--accent); }
+.research-more-footer { display: flex; justify-content: center; margin-top: 6px; }
+.research-more-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--rule); border-radius: 50%; color: var(--primary); transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease; }
+.research-more-icon svg { width: 20px; height: 20px; stroke-width: 1.6; }
+.research-more-icon:hover { color: var(--accent); border-color: var(--accent); background-color: var(--neutral-50); }
 .research-list { margin: 0; padding: 0; list-style: none; }
 .research-list > li { margin: 0 0 18px; border-inline-start: 4px solid var(--primary); padding-inline-start: 16px; transition: background-color 160ms ease; }
 .research-list > li:hover, .research-list > li:focus-within { background-color: var(--neutral-50); }

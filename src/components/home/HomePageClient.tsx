@@ -27,7 +27,7 @@ export default function HomePageClient({ config, home, research }: {
           <section id="research-themes" className="research-themes" aria-label="Research themes">
             {home.themes.map((theme) => (
               <article className="research-theme" key={theme.slug}>
-                <Link className="theme-link" href={`/research/${theme.slug}/`}
+                <Link className="theme-link" href="/research/"
                   aria-labelledby={`theme-${theme.slug}-title`}>
                   <figure className="theme-image">
                     <Image src={assetPath(theme.src)} alt={theme.alt} fill
@@ -44,7 +44,10 @@ export default function HomePageClient({ config, home, research }: {
           {home.background && <div className="background-copy"><ReactMarkdown>{home.background}</ReactMarkdown></div>}
         </section>
         <section id="research" className="research-section" aria-labelledby="research-title">
-          <h2 id="research-title" className="section-eyebrow">{home.research_label}</h2>
+          <div className="research-section-header">
+            <h2 id="research-title" className="section-eyebrow">{home.research_label}</h2>
+            <Link className="research-view-more" href="/research/">View More <ArrowUpRight aria-hidden="true" /></Link>
+          </div>
           <ol className="research-list">
             {research.items.map((item) => {
               const titleEnding = item.title_keep_together && item.title.endsWith(item.title_keep_together)
@@ -63,6 +66,11 @@ export default function HomePageClient({ config, home, research }: {
               );
             })}
           </ol>
+          <div className="research-more-footer">
+            <Link className="research-more-icon" href="/research/" aria-label="View all research projects" title="View More">
+              <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
         </section>
       </div>
     </div>

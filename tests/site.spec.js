@@ -92,7 +92,7 @@ test('supplied research records and author emphasis render correctly', async ({p
   await expect(page.getByRole('link',{name:'PRISM',exact:true})).toHaveAttribute('href','https://github.com/xyjoey/PRISM');
 });
 
-test('whole theme cards respond to hover and open distinct reloadable pages', async ({page}) => {
+test('whole theme cards respond to hover and open the full research page', async ({page}) => {
   await page.emulateMedia({colorScheme:'light'});
   await page.goto('./');
   const homeURL = test.info().project.use.baseURL;
@@ -109,25 +109,32 @@ test('whole theme cards respond to hover and open distinct reloadable pages', as
       await expect(part).toHaveCSS('cursor','pointer');
       await expect(title).toHaveCSS('color','rgb(217, 35, 43)');
     }
-    const destination = new URL(`research/${theme.slug}/`, homeURL);
+    const destination = new URL('research/', homeURL);
     await expect(link).toHaveAttribute('href',destination.pathname);
     await link.locator(['.theme-image', '.theme-keywords', '.theme-read-more'][index]).click();
     await expect(page).toHaveURL(destination.href);
-    await expect(page.getByRole('heading',{level:1})).toHaveText(theme.title);
-    await expect(page.locator('main .theme-keywords')).toHaveText(`Keywords: ${theme.keywords}`);
+    await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
+    await expect(page.locator('.content-card')).toHaveCount(5);
     const response = await page.reload();
     expect(response.ok()).toBe(true);
-    await expect(page.getByRole('heading',{level:1})).toHaveText(theme.title);
-    await page.getByRole('link',{name:'Back to research themes'}).click();
-    await expect(page).toHaveURL(new URL('./#research-themes',homeURL).href);
+    await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
+    await page.goBack();
+    await expect(page).toHaveURL(homeURL);
     await expect(page.getByRole('region',{name:'Research themes'})).toBeVisible();
   }
   await page.getByRole('link',{name:researchThemes[0].title,exact:true}).focus();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('heading',{level:1})).toHaveText(researchThemes[0].title);
+  await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
 });
 
 test('research links open a real static detail page and preserve project anchors',async({page})=>{
+  for (const name of ['View More', 'View all research projects']) {
+    await page.goto('./');
+    const link = page.locator('#research').getByRole('link',{name,exact:true});
+    await link.click();
+    await expect(page).toHaveURL(/\/research\/$/);
+    await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
+  }
   await page.goto('./');
   await page.getByRole('link',{name:researchProjects[2].title,exact:true}).click();
   await expect(page).toHaveURL(/\/research\/#project-03$/);
@@ -146,7 +153,7 @@ test('research links open a real static detail page and preserve project anchors
   await expect(leading.locator('.research-authors').getByText('Jiahao Liu',{exact:true})).toHaveCSS('text-decoration-line','underline');
 });
 
-test('navigation reaches CV, service, and the home research anchor',async({page})=>{
+test('navigation reaches CV, service, and the full research page',async({page})=>{
   await page.goto('./');
   const nav=page.getByRole('navigation',{name:'Main navigation'});
   await nav.getByRole('link',{name:'CV',exact:true}).click();
@@ -155,8 +162,9 @@ test('navigation reaches CV, service, and the home research anchor',async({page}
   await nav.getByRole('link',{name:'Service',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toHaveText('Academic Service');
   await nav.getByRole('link',{name:'Research',exact:true}).click();
-  await expect(page).toHaveURL(/\/#research$/);
-  await expect(page.locator('#research')).toBeVisible();
+  await expect(page).toHaveURL(/\/research\/$/);
+  await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
+  await expect(nav.getByRole('link',{name:'Research',exact:true})).toHaveAttribute('aria-current','page');
 });
 
 test('mobile menu follows a destination and Escape returns focus',async({page})=>{
@@ -167,7 +175,7 @@ test('mobile menu follows a destination and Escape returns focus',async({page})=
   const nav=page.getByRole('navigation',{name:'Mobile navigation'});
   await expect(nav).toBeVisible();
   await nav.getByRole('link',{name:'Research',exact:true}).click();
-  await expect(page).toHaveURL(/#research$/);
+  await expect(page).toHaveURL(/\/research\/$/);
   await expect(nav).toBeHidden();
   await open.click();
   await page.keyboard.press('Escape');
@@ -209,7 +217,7 @@ test('static HTML is readable without JavaScript and keyboard skip link works',a
   await expect(nojs.getByRole('heading',{level:1})).toBeVisible();
   await expect(nojs.locator('.research-list li')).toHaveCount(5);
   await nojs.getByRole('link',{name:researchThemes[0].title,exact:true}).click();
-  await expect(nojs.getByRole('heading',{level:1})).toHaveText(researchThemes[0].title);
+  await expect(nojs.getByRole('heading',{level:1})).toHaveText('Research');
   await context.close();
   await page.goto('./');
   await page.keyboard.press('Tab');

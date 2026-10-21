@@ -40,9 +40,9 @@ href = "/"
 
 [[navigation]]
 title = "Research"
-type = "section"
+type = "page"
 target = "research"
-href = "/#research"
+href = "/research/"
 
 [[navigation]]
 title = "CV"
