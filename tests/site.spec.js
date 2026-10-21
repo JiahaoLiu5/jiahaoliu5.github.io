@@ -139,7 +139,7 @@ test('research links open a real static detail page and preserve project anchors
   await page.getByRole('link',{name:researchProjects[2].title,exact:true}).click();
   await expect(page).toHaveURL(/\/research\/#project-03$/);
   await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
-  await expect(page.locator('#project-03')).toContainText('Research description to be added.');
+  await expect(page.locator('#project-03').getByRole('button',{name:'BibTeX',exact:true})).toBeVisible();
   await page.reload();
   await expect(page.locator('#project-03')).toBeVisible();
   await page.goto('./');
@@ -150,7 +150,61 @@ test('research links open a real static detail page and preserve project anchors
   await expect(leading.locator('.research-authors')).toHaveText(leadingProject.authors);
   await expect(leading).toContainText('09 2026');
   await expect(leading).toContainText(leadingProject.venue);
+  await expect(leading).toContainText('More details will be disclosed soon.');
   await expect(leading.locator('.research-authors').getByText('Jiahao Liu',{exact:true})).toHaveCSS('text-decoration-line','underline');
+});
+
+test('research search and project filters work together and recover from empty results',async({page})=>{
+  await page.goto('./research/');
+  const projects=page.locator('.research-project-list > article');
+  const search=page.getByRole('searchbox',{name:'Search research projects'});
+  await expect(page.getByText('A collection of my research work, presented in reverse chronological order.',{exact:true})).toBeVisible();
+  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(['project-01','project-02','project-03','project-04','project-05']);
+  await page.getByRole('button',{name:'Published Projects',exact:true}).click();
+  await expect(projects).toHaveCount(3);
+  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(['project-03','project-04','project-05']);
+  await page.getByRole('button',{name:'Under Review Projects',exact:true}).click();
+  await expect(projects).toHaveCount(2);
+  await expect(projects.filter({hasText:'More details will be disclosed soon.'})).toHaveCount(2);
+  await expect(page.locator('.project-resource-actions')).toHaveCount(0);
+  await page.getByRole('button',{name:'First-Author Projects',exact:true}).click();
+  await expect(projects).toHaveCount(5);
+  await expect(page.locator('#project-02')).toBeVisible();
+  await search.fill('Kevin');
+  await expect(projects).toHaveCount(2);
+  await page.getByRole('button',{name:'Published Projects',exact:true}).click();
+  await expect(projects).toHaveCount(1);
+  await expect(projects.first()).toHaveAttribute('id','project-04');
+  await page.getByRole('button',{name:'Clear search',exact:true}).click();
+  await expect(projects).toHaveCount(3);
+  await page.getByRole('button',{name:'Filters',exact:true}).click();
+  await expect(page.getByRole('group',{name:'Project filters'})).toBeHidden();
+  await expect(projects).toHaveCount(3);
+  await page.getByRole('button',{name:'Filters',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Published Projects',exact:true})).toHaveAttribute('aria-pressed','true');
+  await page.getByRole('button',{name:'Reset filters',exact:true}).click();
+  await expect(projects).toHaveCount(5);
+  await search.fill('no matching research project');
+  await expect(projects).toHaveCount(0);
+  await expect(page.getByRole('heading',{name:'No projects found',exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Show all projects',exact:true}).click();
+  await expect(projects).toHaveCount(5);
+  await expect(search).toHaveValue('');
+});
+
+test('research rows show consistent typography, image placeholders, and pending publication resources',async({page})=>{
+  await page.goto('./research/');
+  await expect(page.getByRole('img',{name:/Illustration placeholder for/})).toHaveCount(5);
+  const projects=page.locator('.research-project-list > article');
+  for (const project of await projects.all()) {
+    await expect(project.locator('.research-authors')).toHaveCSS('font-size','14.5px');
+    await expect(project.locator('.project-venue')).toHaveCSS('font-size','15px');
+  }
+  for(const id of ['project-03','project-04','project-05']) {
+    const project=page.locator(`#${id}`);
+    for(const name of ['DOI','Abstract','BibTeX'])await expect(project.getByRole('button',{name,exact:true})).toBeDisabled();
+    await expect(project).not.toContainText('Research description to be added.');
+  }
 });
 
 test('navigation reaches CV, service, and the full research page',async({page})=>{
@@ -304,5 +358,12 @@ for(const width of [320,390,768,1440]){
       expect(bounds.every(card => card.x === bounds[0].x)).toBe(true);
       expect(bounds[1].y).toBeGreaterThan(bounds[0].y);
     }
+    await page.goto('./research/');
+    await page.locator('main').evaluate(el=>Promise.all(el.getAnimations({subtree:true}).map(animation=>animation.finished.catch(()=>{}))));
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    const preview=await page.locator('.project-visual').first().boundingBox();
+    const information=await page.locator('.project-information').first().boundingBox();
+    if(width===1440)expect(preview.x+preview.width).toBeLessThan(information.x);
+    else expect(preview.y+preview.height).toBeLessThan(information.y);
   });
 }

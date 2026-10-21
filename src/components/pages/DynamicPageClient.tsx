@@ -3,6 +3,7 @@
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
+import ResearchProjects from '@/components/research/ResearchProjects';
 import { Publication } from '@/types/publication';
 import {
   PublicationPageConfig,
@@ -31,7 +32,7 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className={pageData.type === 'card' && pageData.config.layout === 'research' ? 'research-page' : 'max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12'}>
       {pageData.type === 'publication' && (
         <PublicationsList config={pageData.config} publications={pageData.publications} />
       )}
@@ -39,7 +40,9 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
         <TextPage config={pageData.config} content={pageData.content} />
       )}
       {pageData.type === 'card' && (
-        <CardPage config={pageData.config} />
+        pageData.config.layout === 'research'
+          ? <ResearchProjects config={pageData.config} />
+          : <CardPage config={pageData.config} />
       )}
     </div>
   );
