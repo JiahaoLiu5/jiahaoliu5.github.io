@@ -1,5 +1,6 @@
 export interface HomeContent {
   greeting: string;
+  greeting_zh?: string;
   intro: string;
   background?: string;
   research_label: string;

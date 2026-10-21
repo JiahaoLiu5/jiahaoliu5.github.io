@@ -35,12 +35,12 @@ export default async function ThemePage({ params }: ThemePageProps) {
 
   return (
     <article className="theme-detail">
-      <Link className="theme-detail-back" href="/#research-themes">
+      <Link className="theme-detail-back page-enter" href="/#research-themes">
         <ArrowLeft aria-hidden="true" /> Back to research themes
       </Link>
-      <h1>{theme.title}</h1>
-      <p className="theme-keywords">Keywords: {theme.keywords.join(', ')}</p>
-      <p className="theme-detail-pending">More details will be added here.</p>
+      <h1 className="page-enter enter-step-1">{theme.title}</h1>
+      <p className="theme-keywords page-enter enter-step-2">Keywords: {theme.keywords.join(', ')}</p>
+      <p className="theme-detail-pending page-enter enter-step-3">More details will be added here.</p>
     </article>
   );
 }

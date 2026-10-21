@@ -1,4 +1,5 @@
 greeting = "Hi, I'm Jiahao Liu"
+greeting_zh = "嗨，我是刘佳豪"
 intro = """
 I am a Ph.D. student in the [Bowers School of Computing and Information Science](https://bowers.cornell.edu/) at [Cornell University](https://www.cornell.edu/), where I conduct my doctoral research in the [Virtual Embodiment Lab](https://virtualembodimentlab.com/), advised by [Prof. Andrea Stevenson Won](https://cals.cornell.edu/andrea-stevenson-won). I also work closely with [Prof. Eyal Ofek](https://www.microsoft.com/en-us/research/people/eyalofek/), and I am fortunate to have [Prof. Susan Fussell](https://sfussell.hci.cornell.edu/) and [Prof. Sang-won Leigh](https://www.sangww.net/) on my research committee. Before starting my PhD, I received my bachelor's degree from [Xi'an Jiaotong University](https://en.xjtu.edu.cn/). I am lucky to have summer research experience at [APEX Lab](https://apex-hci.com/), HKUST, with Prof. Mingming Fan, and [J2 Lab](https://jingjieyeo.github.io/), Cornell, with Prof. Jingjie Yeo.
 

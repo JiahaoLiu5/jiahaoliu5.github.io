@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { CardPageConfig } from '@/types/page';
 import ResearchAuthors from '@/components/research/ResearchAuthors';
@@ -32,12 +31,8 @@ const markdownComponents = {
 
 export default function CardPage({ config, embedded = false }: { config: CardPageConfig; embedded?: boolean }) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-        >
-            <div className={embedded ? "mb-4" : "mb-8"}>
+        <div>
+            <div className={`page-enter ${embedded ? "mb-4" : "mb-8"}`}>
                 <h1 className={`${embedded ? "text-2xl" : "text-4xl"} font-serif font-bold text-primary mb-4`}>{config.title}</h1>
                 {config.description && (
                     <div className={`${embedded ? "text-base" : "text-lg"} text-neutral-600 dark:text-neutral-500 max-w-2xl leading-relaxed`}>
@@ -50,13 +45,11 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
 
             <div className={`grid ${embedded ? "gap-4" : "gap-6"}`}>
                 {config.items.map((item, index) => (
-                    <motion.div
+                    <div
                         key={index}
                         id={item.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: 0.1 * index }}
-                        className="content-card"
+                        style={{ animationDelay: `${140 + index * 70}ms` }}
+                        className="content-card page-enter"
                     >
                         <div className="flex justify-between items-start mb-2">
                             <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary`}>{item.title}</h3>
@@ -86,9 +79,9 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                                 ))}
                             </div>
                         )}
-                    </motion.div>
+                    </div>
                 ))}
             </div>
-        </motion.div>
+        </div>
     );
 }

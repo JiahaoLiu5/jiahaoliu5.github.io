@@ -40,3 +40,11 @@ The links favor institutional pages, faculty homepages, and lab homepages:
 | J2 Lab | https://jingjieyeo.github.io/ |
 
 Direct website requests returned proxy-level 403 responses in this environment, including after network access was enabled. Link selection was cross-checked through accessible public academic website sources: the [Virtual Embodiment Lab profile](https://github.com/virtual-embodiment-lab), [Jingjie Yeo's official lab website source](https://github.com/jingjieyeo/jingjieyeo.github.io), [an APEX member's homepage](https://github.com/Vector3q/Vector3q.github.io/blob/main/index.html), [a former Andrea Won student's homepage](https://github.com/kexinz21/kexinz21.github.io), [Ryo Suzuki's advisor links](https://github.com/ryosuzuki/homepage/blob/master/content/experience.yaml), [Tao Long's Cornell biography](https://github.com/iamtaolong/iamtaolong.github.io), and [Max Lever's Sang-won Leigh workshop credit](https://github.com/maxlever/maxlever.me/blob/gh-pages/_posts/2019-01-01-artmatr.html). External destinations were not live HTTP-validated.
+
+## PRISM motion and navigation adaptation
+
+Jiahao requested PRISM-style entrance motion and navigation bubbles, with the site's warm red palette. Upstream `Navigation.tsx`, `About.tsx`, `CardPage.tsx`, and `TextPage.tsx` were consulted. The navigation preserves PRISM's spring tuning (stiffness 400, damping 28), using a shared Framer Motion layout indicator and the existing `accent-light` token. Hover and keyboard focus move the bubble; it returns to the active page. Mobile menu destinations keep the same warm rounded treatment.
+
+Page content fades in from 20px below over 600ms with short, ordered delays. A Next.js template remounts route content so navigating between pages replays the entrance. Existing card/text entrance animations were consolidated to avoid duplicate motion. CSS entrance motion also completes without JavaScript. Reduced-motion preferences disable entrance and bubble travel.
+
+The homepage greeting keeps its English accessible name and a fixed shared text area. Pointer hover or keyboard focus slides English upward and brings Jiahao's supplied Chinese greeting, `嗨，我是刘佳豪`, in from below; leaving restores English. Both labels remain in the content source, and CSS controls the presentation.

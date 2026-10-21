@@ -51,7 +51,7 @@ test('PRISM homepage renders the profile, research themes, and research list wit
   page.on('response', r=>{ if(r.status()>=400)bad.push(`${r.status()} ${r.url()}`); });
   await page.goto('./');
   await expect(page).toHaveTitle('Jiahao Liu');
-  await expect(page.getByRole('heading', { level:1 })).toHaveText("Hi, I'm Jiahao Liu");
+  await expect(page.getByRole('heading', { level:1 })).toHaveAccessibleName("Hi, I'm Jiahao Liu");
   const profile=page.getByRole('complementary',{name:'Profile'});
   await expect(profile).toContainText('Cornell University');
   await expect(profile.getByRole('link',{name:'Email',exact:true})).toHaveAttribute('href','mailto:jl4226@cornell.edu');
@@ -167,6 +167,61 @@ test('navigation reaches CV, service, and the full research page',async({page})=
   await expect(nav.getByRole('link',{name:'Research',exact:true})).toHaveAttribute('aria-current','page');
 });
 
+test('greeting slides to Chinese on hover and keyboard focus and restores English',async({page})=>{
+  await page.goto('./');
+  const greeting=page.getByRole('heading',{name:"Hi, I'm Jiahao Liu",exact:true});
+  const english=greeting.locator('.greeting-english');
+  const chinese=greeting.locator('.greeting-chinese');
+  await expect(chinese).toHaveText('嗨，我是刘佳豪');
+  await expect(english).toHaveCSS('opacity','1');
+  await expect(chinese).toHaveCSS('opacity','0');
+  await greeting.hover();
+  const initial=await greeting.boundingBox();
+  await expect(chinese).toHaveCSS('opacity','1');
+  await expect(english).toHaveCSS('opacity','0');
+  const switched=await greeting.boundingBox();
+  expect(switched.width).toBe(initial.width);
+  expect(switched.height).toBe(initial.height);
+  await page.mouse.move(0,0);
+  await expect(english).toHaveCSS('opacity','1');
+  await expect(chinese).toHaveCSS('opacity','0');
+  await page.keyboard.press('Tab');
+  await greeting.focus();
+  await expect(chinese).toHaveCSS('opacity','1');
+});
+
+test('warm navigation bubble follows hover and focus and returns to the current page',async({page})=>{
+  await page.emulateMedia({colorScheme:'light'});
+  await page.goto('./');
+  const nav=page.getByRole('navigation',{name:'Main navigation'});
+  const home=nav.getByRole('link',{name:'Home',exact:true});
+  const research=nav.getByRole('link',{name:'Research',exact:true});
+  const cv=nav.getByRole('link',{name:'CV',exact:true});
+  await expect(home.locator('.navigation-bubble')).toHaveCSS('background-color','rgb(255, 241, 241)');
+  await research.hover();
+  await expect(research.locator('.navigation-bubble')).toBeVisible();
+  await expect(home).toHaveAttribute('aria-current','page');
+  await page.mouse.move(0,0);
+  await expect(home.locator('.navigation-bubble')).toBeVisible();
+  await cv.focus();
+  await expect(cv.locator('.navigation-bubble')).toBeVisible();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/cv\/$/);
+  await expect(cv).toHaveAttribute('aria-current','page');
+});
+
+test('reduced motion shows page content immediately and keeps navigation usable',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto('./');
+  const greeting=page.getByRole('heading',{name:"Hi, I'm Jiahao Liu",exact:true});
+  await expect(greeting).toBeVisible();
+  await expect(greeting).toHaveCSS('animation-name','none');
+  await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Research',exact:true}).click();
+  await expect(page.getByRole('heading',{level:1})).toBeVisible();
+  await expect(page.locator('.content-card')).toHaveCount(5);
+  await expect(page.locator('.content-card').first()).toHaveCSS('animation-name','none');
+});
+
 test('mobile menu follows a destination and Escape returns focus',async({page})=>{
   await page.setViewportSize({width:390,height:844});
   await page.goto('./');
@@ -234,6 +289,7 @@ for(const width of [320,390,768,1440]){
     await page.setViewportSize({width,height:900});
     await page.goto('./');
     await page.evaluate(()=>document.fonts.ready);
+    await page.locator('main').evaluate(el=>Promise.all(el.getAnimations({subtree:true}).map(animation=>animation.finished.catch(()=>{}))));
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     const cards = page.getByRole('region', { name: 'Research themes' }).getByRole('article');
     const bounds = await cards.evaluateAll(elements => elements.map(element => {

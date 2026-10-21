@@ -14,6 +14,8 @@
 
 首页的 `themes` 数组包含三个研究主题，按展示顺序填写 `slug`、`title`、`keywords`、`src` 和图片描述 `alt`。标题、关键词和三张主题插画均由你提供。整个主题板块是一个链接，鼠标移入或键盘聚焦时标题变红，底部显示 `Read More ↗`；三个主题卡片目前统一指向完整研究页 `/research/`。原来的三个 `/research/{slug}/` 子页面仍保留，使用同一份主题数据；后续布局入口在 `src/app/research/[theme]/page.tsx`。插画按 `Research Theme 1.png`、`2.png`、`3.png` 的顺序对应三个主题，使用无损 WebP 格式发布。之后换图时替换 `src`，同时更新 `alt`。图片框在桌面和手机上均为正方形，以完整显示插画。桌面端三列之间留有间隔；主要内容区域宽度不超过 700px 时，改为纵向排列，避免有侧边栏的平板布局挤压标题。头像路径在 `content/config.toml` 的 `author.avatar`。供图后也请更新头像的替代文字。
 
+问候语来自 `greeting` 和 `greeting_zh`，英文默认显示；鼠标悬停或键盘聚焦标题时，英文上滑、中文从下方进入，移开或失焦后恢复英文。两种语言共用标题占位，避免页面跳动。
+
 自我介绍 `intro` 支持 Markdown，空行分段；链接显示为红色，`**文字**` 显示为加粗。三段介绍、博士导师、委员会成员、本科学校及暑期研究经历均按你提供的文字填写；首页介绍采用两端对齐，开头按后续要求删去 `currently` 并衔接为 `Cornell University, where I conduct…`。第二段仅将指定的五个短语加粗，不添加链接。原有的教育与合作经历待补充说明已删除；可选的 `background` 未填写时不渲染占位区域。外部链接的选择与公开来源记录在 `DESIGN_REFERENCES.md`。
 
 研究列表来自 `content/research.toml` 的 `items`。每条使用稳定的 `id`、真实的 `title`、`authors`（作者名单原文）、`highlight_author`（需要加粗并加下划线的姓名）、`subtitle`（投稿或发表信息）、`date` 和 `content`。作者行显示在标题与投稿信息之间，首页与研究详情页共用同一份数据。首页项目标题会跳到 `/research/#id` 对应的详情；研究列表标题右侧的 `View More ↗`、列表底部居中的圆形箭头、三个研究方向卡片及桌面/手机导航的 Research 都指向 `/research/`。五项的标题、作者和投稿/会议信息均已按你提供的资料录入，项目简介待补充。第二项的 Kevin T. Martinez 和 Jiahao Liu 后均标注 `*`，`highlight_author = "Jiahao Liu*"` 使你的星号也包含在加粗下划线中；投稿信息后按你提供的说明标注 `（* Equal Contribution）`。五项日期均已提供，第五项为 `10 2025`。首页每个研究项目左侧使用 4px 竖线，与文字间隔 16px；竖线使用正文颜色，浅色模式为黑色，深色模式为浅色。整个项目块在鼠标悬停或内部链接获得键盘焦点时使用更浅的 `neutral-50` 背景（浅色模式为 `#fafafa`），日期右侧留出 8px 间距。首页研究标题沿用响应式字号，范围为 24–27px；第五项的 `title_keep_together = "in Virtual Reality"` 让标题末尾短语整体换行，在桌面从第二行开始，同时适应手机宽度。
@@ -25,3 +27,5 @@
 提交到 `main` 后自动构建 `out/` 并发布到 GitHub Pages。
 
 购买域名后，配置 GitHub Pages Custom domain 与注册商 DNS，将 `content/config.toml` 的 `site.url` 改为新域名，再发布即可。未购买域名前不写入 CNAME。
+
+页面入场沿用 PRISM 的淡入与 20px 上浮效果，Home、Research、CV、Service 及方向详情页均从上至下依次显示。`src/app/template.tsx` 在切页时重新挂载内容，使入场效果再次播放；动画样式在 `src/app/globals.css`。桌面导航使用暖红色 `accent-light` 气泡，跟随悬停或键盘焦点弹性滑动，并回到当前页面；手机导航使用同色圆角背景。开启系统“减少动态效果”后，入场和导航滑动动画会关闭，问候语直接切换。

@@ -16,17 +16,22 @@ export default function HomePageClient({ config, home, research }: {
 }) {
   return (
     <div className="home-layout">
-      <aside className="profile-rail" aria-label="Profile">
+      <aside className="profile-rail page-enter" aria-label="Profile">
         <Profile author={config.author} social={config.social} features={config.features}
           researchInterests={['Human–computer interaction', 'Behavioral research', 'VR / AR / MR']} />
       </aside>
       <div className="home-content">
         <section id="about" className="intro-section" aria-labelledby="intro-title">
-          <h1 id="intro-title">{home.greeting}</h1>
-          <div className="intro-copy"><ReactMarkdown>{home.intro}</ReactMarkdown></div>
+          <h1 id="intro-title" className="greeting-heading page-enter enter-step-1" tabIndex={0} aria-label={home.greeting}>
+            <span className="greeting-window" aria-hidden="true">
+              <span className="greeting-english">{home.greeting}</span>
+              {home.greeting_zh && <span className="greeting-chinese" lang="zh-Hans">{home.greeting_zh}</span>}
+            </span>
+          </h1>
+          <div className="intro-copy page-enter enter-step-2"><ReactMarkdown>{home.intro}</ReactMarkdown></div>
           <section id="research-themes" className="research-themes" aria-label="Research themes">
             {home.themes.map((theme) => (
-              <article className="research-theme" key={theme.slug}>
+              <article className="research-theme page-enter" key={theme.slug}>
                 <Link className="theme-link" href="/research/"
                   aria-labelledby={`theme-${theme.slug}-title`}>
                   <figure className="theme-image">
@@ -43,7 +48,7 @@ export default function HomePageClient({ config, home, research }: {
           </section>
           {home.background && <div className="background-copy"><ReactMarkdown>{home.background}</ReactMarkdown></div>}
         </section>
-        <section id="research" className="research-section" aria-labelledby="research-title">
+        <section id="research" className="research-section page-enter enter-step-3" aria-labelledby="research-title">
           <div className="research-section-header">
             <h2 id="research-title" className="section-eyebrow">{home.research_label}</h2>
             <Link className="research-view-more" href="/research/">View More <ArrowUpRight aria-hidden="true" /></Link>
