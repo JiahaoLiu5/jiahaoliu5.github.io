@@ -59,7 +59,7 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                                 </span>
                             )}
                         </div>
-                        <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
+                        <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} authorNote={item.author_note} />
                         {item.subtitle && (
                             <p className={`${embedded ? "text-sm" : "text-base"} text-accent font-medium mb-3`}>{item.subtitle}</p>
                         )}

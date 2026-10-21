@@ -21,7 +21,8 @@ authorship = "co-first"
 title = "Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality"
 authors = "Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won"
 highlight_author = "Jiahao Liu*"
-subtitle = "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems （* Equal Contribution）"
+author_note = "（* Equal Contribution）"
+subtitle = "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems"
 date = "09 2026"
 content = "More details will be disclosed soon."
 
@@ -55,3 +56,25 @@ authors = "Jiahao Liu, Zewuzi Meng, Lydia Lin, Andrea Stevenson Won"
 highlight_author = "Jiahao Liu"
 subtitle = "ACM CSCW '25 | Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing"
 date = "10 2025"
+
+[[items]]
+id = "project-06"
+status = "published"
+authorship = "first"
+featured = false
+title = "Predicting the Fracture Propensity of Amorphous Silica Using Molecular Dynamics Simulations and Machine Learning"
+authors = "Jiahao Liu, Jingjie Yeo"
+highlight_author = "Jiahao Liu"
+subtitle = "International Journal of Applied Mechanics | Volume 15, Issue 10, Article 2350086"
+date = "09 2023"
+
+[[items]]
+id = "project-07"
+status = "published"
+authorship = "first"
+featured = false
+title = "Evaluation of the Pulse and Temperature of Higher Education System through Modeling and Data Mining"
+authors = "Jiahao Liu, Yutai Gao, Yue Zhuo, Jian Zu"
+highlight_author = "Jiahao Liu"
+subtitle = "DSInS '21 | 2021 International Conference on Digital Society and Intelligent Systems"
+date = "12 2021"

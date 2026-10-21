@@ -54,7 +54,7 @@ export default function HomePageClient({ config, home, research }: {
             <Link className="research-view-more" href="/research/">View More <ArrowUpRight aria-hidden="true" /></Link>
           </div>
           <ol className="research-list">
-            {research.items.map((item) => {
+            {research.items.filter(item => item.featured !== false).map((item) => {
               const titleEnding = item.title_keep_together && item.title.endsWith(item.title_keep_together)
                 ? item.title_keep_together : '';
               return (
@@ -65,7 +65,7 @@ export default function HomePageClient({ config, home, research }: {
                     </Link></h3>
                     {item.date && <span className="research-date">{item.date}</span>}
                   </div>
-                  <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
+                  <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} authorNote={item.author_note} />
                   {item.subtitle && <p className="research-venue">{item.subtitle}</p>}
                 </li>
               );

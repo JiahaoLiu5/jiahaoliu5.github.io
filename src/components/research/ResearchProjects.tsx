@@ -137,7 +137,7 @@ export default function ResearchProjects({ config }: { config: CardPageConfig })
             <h2>{item.title}</h2>
             {item.date && <time dateTime={item.date.replace(/^(\d{2})\s+(\d{4})$/, '$2-$1')}>{item.date}</time>}
           </div>
-          <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} />
+          <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} authorNote={item.author_note} />
           {item.subtitle && <p className="project-venue">{item.subtitle}</p>}
           {item.content && <div className="project-description"><ReactMarkdown>{item.content}</ReactMarkdown></div>}
           <ProjectResources item={item} />

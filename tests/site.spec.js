@@ -8,9 +8,9 @@ const researchProjects = [{
   date: '09 2026',
 }, {
   title: 'Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality',
-  authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won',
+  authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won （* Equal Contribution）',
   highlight: 'Jiahao Liu*',
-  venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems （* Equal Contribution）",
+  venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
   date: '09 2026',
 }, {
   title: 'Extended Applications of Augmented Social Influence Through Imposed Synchrony',
@@ -29,6 +29,20 @@ const researchProjects = [{
   date: '10 2025',
 }];
 const leadingProject = researchProjects[0];
+const additionalResearchProjects = [{
+  id: 'project-06',
+  title: 'Predicting the Fracture Propensity of Amorphous Silica Using Molecular Dynamics Simulations and Machine Learning',
+  authors: 'Jiahao Liu, Jingjie Yeo',
+  venue: 'International Journal of Applied Mechanics | Volume 15, Issue 10, Article 2350086',
+  date: '09 2023',
+}, {
+  id: 'project-07',
+  title: 'Evaluation of the Pulse and Temperature of Higher Education System through Modeling and Data Mining',
+  authors: 'Jiahao Liu, Yutai Gao, Yue Zhuo, Jian Zu',
+  venue: "DSInS '21 | 2021 International Conference on Digital Society and Intelligent Systems",
+  date: '12 2021',
+}];
+const allProjectIds = ['project-01','project-02','project-03','project-04','project-05',...additionalResearchProjects.map(project=>project.id)];
 const researchThemes = [
   {
     slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
@@ -114,7 +128,7 @@ test('whole theme cards respond to hover and open the full research page', async
     await link.locator(['.theme-image', '.theme-keywords', '.theme-read-more'][index]).click();
     await expect(page).toHaveURL(destination.href);
     await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
-    await expect(page.locator('.content-card')).toHaveCount(5);
+    await expect(page.locator('.content-card')).toHaveCount(7);
     const response = await page.reload();
     expect(response.ok()).toBe(true);
     await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
@@ -159,16 +173,16 @@ test('research search and project filters work together and recover from empty r
   const projects=page.locator('.research-project-list > article');
   const search=page.getByRole('searchbox',{name:'Search research projects'});
   await expect(page.getByText('A collection of my research work, presented in reverse chronological order.',{exact:true})).toBeVisible();
-  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(['project-01','project-02','project-03','project-04','project-05']);
+  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(allProjectIds);
   await page.getByRole('button',{name:'Published Projects',exact:true}).click();
-  await expect(projects).toHaveCount(3);
-  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(['project-03','project-04','project-05']);
+  await expect(projects).toHaveCount(5);
+  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(allProjectIds.slice(2));
   await page.getByRole('button',{name:'Under Review Projects',exact:true}).click();
   await expect(projects).toHaveCount(2);
   await expect(projects.filter({hasText:'More details will be disclosed soon.'})).toHaveCount(2);
   await expect(page.locator('.project-resource-actions')).toHaveCount(0);
   await page.getByRole('button',{name:'First-Author Projects',exact:true}).click();
-  await expect(projects).toHaveCount(5);
+  await expect(projects).toHaveCount(7);
   await expect(page.locator('#project-02')).toBeVisible();
   await search.fill('Kevin');
   await expect(projects).toHaveCount(2);
@@ -176,35 +190,46 @@ test('research search and project filters work together and recover from empty r
   await expect(projects).toHaveCount(1);
   await expect(projects.first()).toHaveAttribute('id','project-04');
   await page.getByRole('button',{name:'Clear search',exact:true}).click();
-  await expect(projects).toHaveCount(3);
+  await expect(projects).toHaveCount(5);
   await page.getByRole('button',{name:'Filters',exact:true}).click();
   await expect(page.getByRole('group',{name:'Project filters'})).toBeHidden();
-  await expect(projects).toHaveCount(3);
+  await expect(projects).toHaveCount(5);
   await page.getByRole('button',{name:'Filters',exact:true}).click();
   await expect(page.getByRole('button',{name:'Published Projects',exact:true})).toHaveAttribute('aria-pressed','true');
   await page.getByRole('button',{name:'Reset filters',exact:true}).click();
-  await expect(projects).toHaveCount(5);
+  await expect(projects).toHaveCount(7);
   await search.fill('no matching research project');
   await expect(projects).toHaveCount(0);
   await expect(page.getByRole('heading',{name:'No projects found',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Show all projects',exact:true}).click();
-  await expect(projects).toHaveCount(5);
+  await expect(projects).toHaveCount(7);
   await expect(search).toHaveValue('');
 });
 
 test('research rows show consistent typography, image placeholders, and pending publication resources',async({page})=>{
   await page.goto('./research/');
-  await expect(page.getByRole('img',{name:/Illustration placeholder for/})).toHaveCount(5);
+  await expect(page.getByRole('img',{name:/Illustration placeholder for/})).toHaveCount(7);
   const projects=page.locator('.research-project-list > article');
   for (const project of await projects.all()) {
     await expect(project.locator('.research-authors')).toHaveCSS('font-size','14.5px');
     await expect(project.locator('.project-venue')).toHaveCSS('font-size','15px');
   }
-  for(const id of ['project-03','project-04','project-05']) {
+  for(const id of allProjectIds.slice(2)) {
     const project=page.locator(`#${id}`);
     for(const name of ['DOI','Abstract','BibTeX'])await expect(project.getByRole('button',{name,exact:true})).toBeDisabled();
     await expect(project).not.toContainText('Research description to be added.');
   }
+  for(const record of additionalResearchProjects) {
+    const project=page.locator(`#${record.id}`);
+    await expect(project.getByRole('heading')).toHaveText(record.title);
+    await expect(project.locator('.research-authors')).toHaveText(record.authors);
+    await expect(project.locator('.project-venue')).toHaveText(record.venue);
+    await expect(project.locator('time')).toHaveText(record.date);
+    await expect(project.locator('time')).toHaveAttribute('datetime',record.date.replace(/^(\d{2}) (\d{4})$/,'$2-$1'));
+  }
+  const cofirst=page.locator('#project-02');
+  await expect(cofirst.locator('.research-authors')).toContainText('（* Equal Contribution）');
+  await expect(cofirst.locator('.project-venue')).not.toContainText('Equal Contribution');
 });
 
 test('navigation reaches CV, service, and the full research page',async({page})=>{
@@ -273,7 +298,7 @@ test('reduced motion shows page content immediately and keeps navigation usable'
   await expect(greeting).toHaveCSS('animation-name','none');
   await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Research',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toBeVisible();
-  await expect(page.locator('.content-card')).toHaveCount(5);
+  await expect(page.locator('.content-card')).toHaveCount(7);
   await expect(page.locator('.content-card').first()).toHaveCSS('animation-name','none');
 });
 
@@ -365,5 +390,18 @@ for(const width of [320,390,768,1440]){
     const information=await page.locator('.project-information').first().boundingBox();
     if(width===1440)expect(preview.x+preview.width).toBeLessThan(information.x);
     else expect(preview.y+preview.height).toBeLessThan(information.y);
+    for(const project of await page.locator('.research-project').all()) {
+      const title=await project.getByRole('heading').boundingBox();
+      const date=await project.locator('time').boundingBox();
+      expect(Math.abs(title.y-date.y)).toBeLessThan(1);
+      expect(date.x).toBeGreaterThanOrEqual(title.x+title.width);
+      if(width===1440) {
+        for(const selector of ['.research-authors','.project-venue']) {
+          const text=await project.locator(selector).boundingBox();
+          expect(Math.abs(text.width-title.width)).toBeLessThan(1);
+          expect(text.width).toBeLessThanOrEqual(700);
+        }
+      }
+    }
   });
 }

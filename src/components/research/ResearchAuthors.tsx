@@ -1,6 +1,7 @@
-export default function ResearchAuthors({ authors, highlightAuthor }: {
+export default function ResearchAuthors({ authors, highlightAuthor, authorNote }: {
   authors?: string;
   highlightAuthor?: string;
+  authorNote?: string;
 }) {
   if (!authors) return null;
   const name = highlightAuthor || '';
@@ -13,6 +14,7 @@ export default function ResearchAuthors({ authors, highlightAuthor }: {
         <strong><u>{name}</u></strong>
         {authors.slice(index + name.length)}
       </>}
+      {authorNote && <> <span className="research-author-note">{authorNote}</span></>}
     </p>
   );
 }
