@@ -32,8 +32,10 @@
 
 完整 Research 页通过 `layout = "research"` 使用 `src/components/research/ResearchProjects.tsx`，按 `date`（月 年）从新到旧排序，同月保留原始顺序。搜索支持标题、作者、会议信息、日期和摘要中的多个关键词，和四类筛选组合使用。`status` 为 `under-review` 或 `published`；`authorship` 为 `first`、`co-first` 或 `contributor`。First-Author Projects 包括共同一作，第二篇据已提供的共同贡献标注设为 `co-first`。
 
-完整页采用左图右文；主要内容容器宽度不超过 740px 时改为上下排列。示意图暂为 16:10 长方形占位，窄屏为 16:9。之后将真实图片放到 `public/images/`，在相应项目设置 `image = "/images/文件名.webp"` 和 `image_alt` 即可替换。桌面端标题、作者名单和投稿/会议信息共用最大 700px 的文字列，右侧日期独立成列并对齐标题首行。作者行字号为 14.5px，投稿/会议信息为 15px；这些样式仅作用于完整页，首页字号保持原样。容器不超过 740px 时，日期仍对齐标题首行，作者与会议信息则使用全部可用宽度，保证手机上的阅读空间。
+完整页采用左图右文；主要内容容器宽度不超过 740px 时改为上下排列。示意图暂为 16:10 长方形占位，窄屏为 16:9。之后将真实图片放到 `public/images/`，在相应项目设置 `image = "/images/文件名.webp"` 和 `image_alt` 即可替换。完整 Research 页的最大宽度为 1100px（含两侧各 28px 内边距），比全站 1216px 容器更窄。桌面端标题、作者名单和投稿/会议信息共用最大 700px 的文字列，右侧日期使用 68px 独立列并对齐标题首行，列间距固定为 20px，避免多余空间被分配到日期前。作者行字号为 14.5px，投稿/会议信息为 15px；这些样式仅作用于完整页，首页字号保持原样。容器不超过 740px 时，日期仍对齐标题首行，作者与会议信息则使用全部可用宽度，保证手机上的阅读空间。
 
 按你的补充要求，已发表项目目前统一摆放 DOI、Abstract、BibTeX 三个标签，未填写资料时显示为禁用状态，不使用虚假地址。之后可填写 `doi`（不含 https://doi.org/）、`abstract`（摘要原文）或 `abstract_url`，以及 `bibtex`（可用 TOML 多行字符串）；已填写的资源会自动启用，摘要和 BibTeX 支持展开，引用支持复制。页面分类与作者名单仍以你提供的信息为准。
 
 2026-10-21 根据公开 ORCID 作品列表及 Crossref 出版方注册记录，补充了 2023 年无定形二氧化硅断裂预测论文、2021 年高等教育系统评估论文。均使用现有图示和资源标签占位，作者身份设为一作，纳入搜索和筛选。两篇设置 `featured = false`，只在完整 Research 页显示，首页保留五个精选项目；未设置 `featured` 的旧条目默认显示在首页。日期沿用月年格式，2023 年论文采用 Crossref 的首次在线发表月份 09 2023（纸本期次为 2023 年 12 月）；2021 年论文采用出版方注册的会议发表月份 12 2021。来源及访问限制见 `DESIGN_REFERENCES.md`。
+
+最新批注：研究页简介为 `A collection of my research work, ordered by date.`；`project-01` 的作者姓名更新为 `Zhalae W. Daneshvari`、`Sarah J. Swee`，因数据共用也会更新首页。`project-06` 的显示信息为 `IJAM | International Journal of Applied Mechanics, Volume 15, Issue 10, Article 2350086`，`project-07` 增加 `IEEE` 前缀。新增 `project-08`，标题、五名作者和 CHI EA '27 投稿信息按你提供的文字录入，日期按补充回复设为 `10 2026`，因此自动排在完整页最前；状态为投稿中，说明沿用 `More details will be disclosed soon.`。该条设置 `featured = false`，首页保留现有五个精选项目；完整页共八项，搜索与筛选包含新增条目。原有项目的 ID 保持不变，已有锚点链接继续可用。

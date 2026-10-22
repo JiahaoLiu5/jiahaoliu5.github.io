@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const themeButton = (page) => page.getByRole('button', { name: 'Change color theme' });
 const researchProjects = [{
   title: 'Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads',
-  authors: 'Jiahao Liu, Zhalae Daneshvari, Yilu Sun, David Chess, Sarah Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
+  authors: 'Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
   venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
   date: '09 2026',
 }, {
@@ -29,20 +29,27 @@ const researchProjects = [{
   date: '10 2025',
 }];
 const leadingProject = researchProjects[0];
+const newSubmission = {
+  id: 'project-08',
+  title: 'Transformed Social Interaction in the Age of AI: Reconfiguring Embodiment, Agency, and Social Relationships in XR',
+  authors: 'Jiahao Liu, Sang-won Leigh, Eyal Ofek, Jeremy N. Bailenson, Andrea Stevenson Won',
+  venue: "Submitted to ACM CHI EA '27 | ACM CHI Conference on Human Factors in Computing Systems",
+  date: '10 2026',
+};
 const additionalResearchProjects = [{
   id: 'project-06',
   title: 'Predicting the Fracture Propensity of Amorphous Silica Using Molecular Dynamics Simulations and Machine Learning',
   authors: 'Jiahao Liu, Jingjie Yeo',
-  venue: 'International Journal of Applied Mechanics | Volume 15, Issue 10, Article 2350086',
+  venue: 'IJAM | International Journal of Applied Mechanics, Volume 15, Issue 10, Article 2350086',
   date: '09 2023',
 }, {
   id: 'project-07',
   title: 'Evaluation of the Pulse and Temperature of Higher Education System through Modeling and Data Mining',
   authors: 'Jiahao Liu, Yutai Gao, Yue Zhuo, Jian Zu',
-  venue: "DSInS '21 | 2021 International Conference on Digital Society and Intelligent Systems",
+  venue: "IEEE DSInS '21 | 2021 International Conference on Digital Society and Intelligent Systems",
   date: '12 2021',
 }];
-const allProjectIds = ['project-01','project-02','project-03','project-04','project-05',...additionalResearchProjects.map(project=>project.id)];
+const allProjectIds = [newSubmission.id,'project-01','project-02','project-03','project-04','project-05',...additionalResearchProjects.map(project=>project.id)];
 const researchThemes = [
   {
     slug: 'immersive-xr', title: 'Human Interaction Behavior in Immersive XR',
@@ -128,7 +135,7 @@ test('whole theme cards respond to hover and open the full research page', async
     await link.locator(['.theme-image', '.theme-keywords', '.theme-read-more'][index]).click();
     await expect(page).toHaveURL(destination.href);
     await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
-    await expect(page.locator('.content-card')).toHaveCount(7);
+    await expect(page.locator('.content-card')).toHaveCount(8);
     const response = await page.reload();
     expect(response.ok()).toBe(true);
     await expect(page.getByRole('heading',{level:1})).toHaveText('Research');
@@ -172,17 +179,21 @@ test('research search and project filters work together and recover from empty r
   await page.goto('./research/');
   const projects=page.locator('.research-project-list > article');
   const search=page.getByRole('searchbox',{name:'Search research projects'});
-  await expect(page.getByText('A collection of my research work, presented in reverse chronological order.',{exact:true})).toBeVisible();
+  await expect(page.getByText('A collection of my research work, ordered by date.',{exact:true})).toBeVisible();
   expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(allProjectIds);
   await page.getByRole('button',{name:'Published Projects',exact:true}).click();
   await expect(projects).toHaveCount(5);
-  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(allProjectIds.slice(2));
+  expect(await projects.evaluateAll(els=>els.map(el=>el.id))).toEqual(allProjectIds.slice(3));
   await page.getByRole('button',{name:'Under Review Projects',exact:true}).click();
-  await expect(projects).toHaveCount(2);
-  await expect(projects.filter({hasText:'More details will be disclosed soon.'})).toHaveCount(2);
+  await expect(projects).toHaveCount(3);
+  await expect(projects.filter({hasText:'More details will be disclosed soon.'})).toHaveCount(3);
   await expect(page.locator('.project-resource-actions')).toHaveCount(0);
+  await search.fill('Bailenson');
+  await expect(projects).toHaveCount(1);
+  await expect(projects.first()).toHaveAttribute('id',newSubmission.id);
+  await page.getByRole('button',{name:'Clear search',exact:true}).click();
   await page.getByRole('button',{name:'First-Author Projects',exact:true}).click();
-  await expect(projects).toHaveCount(7);
+  await expect(projects).toHaveCount(8);
   await expect(page.locator('#project-02')).toBeVisible();
   await search.fill('Equal Contribution');
   await expect(projects).toHaveCount(1);
@@ -200,29 +211,29 @@ test('research search and project filters work together and recover from empty r
   await page.getByRole('button',{name:'Filters',exact:true}).click();
   await expect(page.getByRole('button',{name:'Published Projects',exact:true})).toHaveAttribute('aria-pressed','true');
   await page.getByRole('button',{name:'Reset filters',exact:true}).click();
-  await expect(projects).toHaveCount(7);
+  await expect(projects).toHaveCount(8);
   await search.fill('no matching research project');
   await expect(projects).toHaveCount(0);
   await expect(page.getByRole('heading',{name:'No projects found',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Show all projects',exact:true}).click();
-  await expect(projects).toHaveCount(7);
+  await expect(projects).toHaveCount(8);
   await expect(search).toHaveValue('');
 });
 
 test('research rows show consistent typography, image placeholders, and pending publication resources',async({page})=>{
   await page.goto('./research/');
-  await expect(page.getByRole('img',{name:/Illustration placeholder for/})).toHaveCount(7);
+  await expect(page.getByRole('img',{name:/Illustration placeholder for/})).toHaveCount(8);
   const projects=page.locator('.research-project-list > article');
   for (const project of await projects.all()) {
     await expect(project.locator('.research-authors')).toHaveCSS('font-size','14.5px');
     await expect(project.locator('.project-venue')).toHaveCSS('font-size','15px');
   }
-  for(const id of allProjectIds.slice(2)) {
+  for(const id of allProjectIds.slice(3)) {
     const project=page.locator(`#${id}`);
     for(const name of ['DOI','Abstract','BibTeX'])await expect(project.getByRole('button',{name,exact:true})).toBeDisabled();
     await expect(project).not.toContainText('Research description to be added.');
   }
-  for(const record of additionalResearchProjects) {
+  for(const record of [newSubmission,...additionalResearchProjects]) {
     const project=page.locator(`#${record.id}`);
     await expect(project.getByRole('heading')).toHaveText(record.title);
     await expect(project.locator('.research-authors')).toHaveText(record.authors);
@@ -301,7 +312,7 @@ test('reduced motion shows page content immediately and keeps navigation usable'
   await expect(greeting).toHaveCSS('animation-name','none');
   await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Research',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toBeVisible();
-  await expect(page.locator('.content-card')).toHaveCount(7);
+  await expect(page.locator('.content-card')).toHaveCount(8);
   await expect(page.locator('.content-card').first()).toHaveCSS('animation-name','none');
 });
 
@@ -399,6 +410,8 @@ for(const width of [320,390,768,1440]){
       expect(Math.abs(title.y-date.y)).toBeLessThan(1);
       expect(date.x).toBeGreaterThanOrEqual(title.x+title.width);
       if(width===1440) {
+        expect(date.x-title.x-title.width).toBeGreaterThanOrEqual(20);
+        expect(date.x-title.x-title.width).toBeLessThan(24);
         for(const selector of ['.research-authors','.project-venue']) {
           const text=await project.locator(selector).boundingBox();
           expect(Math.abs(text.width-title.width)).toBeLessThan(1);
@@ -406,5 +419,6 @@ for(const width of [320,390,768,1440]){
         }
       }
     }
+    if(width===1440)expect((await page.locator('.research-page').boundingBox()).width).toBeLessThanOrEqual(1100);
   });
 }
