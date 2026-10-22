@@ -1,11 +1,5 @@
 # Jiahao Liu's academic homepage
 
-Website: <https://jiahaoliu5.github.io/> · Repository: <https://github.com/JiahaoLiu5/jiahaoliu5.github.io>
-
-This version directly adapts [Yixuan Yang's website source](https://github.com/YeungYathin/YeungYathin.github.io) at commit `bab9481cf9700d0e07d4138debec7c5d46aa35b9`. Its layouts, includes, stylesheet, and JavaScript replace the previous design. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for the source record and changes.
-
-The profile sidebar adapts [AcademicPages](https://github.com/academicpages/academicpages.github.io): a circular portrait, name, short biography, and vertically aligned contact/profile icons. Unknown account links remain text placeholders. Its CSS and responsive disclosure script are scoped separately; the original main-page stylesheet and script remain unchanged. Third-party notices are in `licenses/` and included in the published artifact.
-
 ## Development
 
 Node.js 24 is available in the cloud environment.
