@@ -65,8 +65,11 @@ export default function HomePageClient({ config, home, research }: {
                     </Link></h3>
                     {item.date && <span className="research-date">{item.date}</span>}
                   </div>
-                  <ResearchAuthors authors={item.authors} highlightAuthor={item.highlight_author} authorNote={item.author_note} />
-                  {item.subtitle && <p className="research-venue">{item.subtitle}</p>}
+                  <ResearchAuthors authors={item.home_authors ?? item.authors} highlightAuthor={item.highlight_author} />
+                  {(item.subtitle || item.author_note) && <p className="research-venue">
+                    {item.subtitle}
+                    {item.author_note && <> <span className="research-author-note">{item.author_note}</span></>}
+                  </p>}
                 </li>
               );
             })}

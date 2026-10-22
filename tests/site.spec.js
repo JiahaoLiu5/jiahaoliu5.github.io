@@ -4,11 +4,13 @@ const themeButton = (page) => page.getByRole('button', { name: 'Change color the
 const researchProjects = [{
   title: 'Reconfiguring Social Leading: Asymmetrically Transforming Avatars’ Nonverbal Behavior in Social VR Triads',
   authors: 'Jiahao Liu, Zhalae W. Daneshvari, Yilu Sun, David Chess, Sarah J. Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
+  homeAuthors: 'Jiahao Liu, Zhalae Daneshvari, Yilu Sun, David Chess, Sarah Swee, Jiaxuan Han, Zewuzi Meng, Eyal Ofek, Andrea Stevenson Won',
   venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
   date: '09 2026',
 }, {
   title: 'Invisible Strings: A Social Leading Scenario via Imposed Behavioral Synchrony in Virtual Reality',
-  authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won （* Equal Contribution）',
+  authors: 'Kevin T. Martinez*, Jiahao Liu*, Nalini Agnihotri, Shayla K. Reid, Tianqi Liu, Yilu Sun, Lydia Lin, Zewuzi Meng, Andrea Stevenson Won',
+  authorNote: '（* Equal Contribution）',
   highlight: 'Jiahao Liu*',
   venue: "Submitted to ACM CHI '27 | ACM CHI Conference on Human Factors in Computing Systems",
   date: '09 2026',
@@ -99,11 +101,11 @@ test('supplied research records and author emphasis render correctly', async ({p
   for (const [index, record] of researchProjects.entries()) {
     const project = page.locator('.research-list li').nth(index);
     await expect(project.getByRole('heading')).toHaveText(record.title);
-    await expect(project.locator('.research-authors')).toHaveText(record.authors);
+    await expect(project.locator('.research-authors')).toHaveText(record.homeAuthors || record.authors);
     const author = project.locator('.research-authors').getByText(record.highlight || 'Jiahao Liu',{exact:true});
     await expect(author).toHaveCSS('font-weight','700');
     await expect(author).toHaveCSS('text-decoration-line','underline');
-    await expect(project.locator('.research-venue')).toHaveText(record.venue);
+    await expect(project.locator('.research-venue')).toHaveText([record.venue,record.authorNote].filter(Boolean).join(' '));
     await expect(project.locator('.research-date')).toHaveText(record.date);
   }
   await expect(page.locator('body')).not.toContainText('Jonathan Segal');

@@ -20,6 +20,7 @@ export interface CardItem {
     subtitle?: string;
     title_keep_together?: string;
     authors?: string;
+    home_authors?: string;
     author_note?: string;
     highlight_author?: string;
     featured?: boolean;
