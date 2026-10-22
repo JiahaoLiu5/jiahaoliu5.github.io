@@ -33,7 +33,7 @@ const newSubmission = {
   id: 'project-08',
   title: 'Transformed Social Interaction in the Age of AI: Reconfiguring Embodiment, Agency, and Social Relationships in XR',
   authors: 'Jiahao Liu, Sang-won Leigh, Eyal Ofek, Jeremy N. Bailenson, Andrea Stevenson Won',
-  venue: "Submitted to ACM CHI EA '27 | ACM CHI Conference on Human Factors in Computing Systems",
+  venue: "CHI Workshop Proposal | ACM CHI Conference on Human Factors in Computing Systems",
   date: '10 2026',
 };
 const additionalResearchProjects = [{

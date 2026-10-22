@@ -70,7 +70,7 @@ The silica paper’s Cornell/Xi’an Jiaotong affiliations and Jingjie Yeo coaut
 
 ## Latest research annotations
 
-Jiahao supplied the title “Transformed Social Interaction in the Age of AI: Reconfiguring Embodiment, Agency, and Social Relationships in XR”, authors Jiahao Liu, Sang-won Leigh, Eyal Ofek, Jeremy N. Bailenson, and Andrea Stevenson Won, and the CHI EA '27 submission label. The follow-up reply supplied October 2026 as its date. The new `project-08` is under review, uses the existing disclosure message and illustration placeholder, and sorts first by date. It appears on the full Research page; the homepage retains its five selected entries, as stated during clarification. Existing IDs remain unchanged.
+Jiahao supplied the title “Transformed Social Interaction in the Age of AI: Reconfiguring Embodiment, Agency, and Social Relationships in XR”, authors Jiahao Liu, Sang-won Leigh, Eyal Ofek, Jeremy N. Bailenson, and Andrea Stevenson Won, and the submission label, subsequently revised by Jiahao to “CHI Workshop Proposal” before the venue separator. The follow-up reply supplied October 2026 as its date. The new `project-08` is under review, uses the existing disclosure message and illustration placeholder, and sorts first by date. It appears on the full Research page; the homepage retains its five selected entries, as stated during clarification. Existing IDs remain unchanged.
 
 Jiahao also supplied the middle initials for Zhalae W. Daneshvari and Sarah J. Swee, the shorter “ordered by date” description, the IJAM venue label, and the IEEE prefix for DSInS. These editorial changes come directly from Jiahao’s annotations.
 
